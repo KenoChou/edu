@@ -1,62 +1,48 @@
-/**index.wxss**/
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
-}
+page { background: #f8f9fb; }
 
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
-  width: 80%;
-}
+/* 导航适配 */
+.custom-nav { background: #fff; position: sticky; top: 0; z-index: 100; }
+.nav-content { display: flex; align-items: center; padding-left: 30rpx; }
+.loc { font-size: 32rpx; font-weight: bold; max-width: 300rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.arrow { font-size: 18rpx; color: #666; margin-left: 6rpx; }
+.msg { margin-left: 30rpx; position: relative; font-size: 38rpx; }
+.dot { position: absolute; top: 0; right: 0; width: 10rpx; height: 10rpx; background: red; border-radius: 50%; border: 2rpx solid #fff; }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
+/* 搜索 */
+.search-box { background: #fff; padding: 10rpx 30rpx 20rpx; }
+.s-in { background: #f2f3f5; height: 72rpx; border-radius: 36rpx; display: flex; align-items: center; padding: 0 30rpx; }
+.s-in input { flex: 1; font-size: 26rpx; margin-left: 15rpx; }
 
-.usermotto {
-  margin-top: 200px;
-}
+/* Banner */
+.banner { padding: 20rpx 30rpx; }
+.b-card { height: 320rpx; background: #2a5298; border-radius: 24rpx; padding: 40rpx; color: #fff; position: relative; }
+.b-t { font-size: 40rpx; font-weight: bold; }
+.b-s { font-size: 24rpx; margin-top: 10rpx; opacity: 0.8; }
+.b-p { position: absolute; bottom: 30rpx; left: 50%; transform: translateX(-50%); width: 10rpx; height: 10rpx; background: #fff; border-radius: 50%; }
 
-.avatar-wrapper {
-  padding: 0;
-  width: 56px !important;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
+/* 九宫格均匀分布 */
+.menu-grid { display: flex; flex-wrap: wrap; background: #fff; padding: 30rpx 10rpx; }
+.menu-item { width: 20%; display: flex; flex-direction: column; align-items: center; margin-bottom: 30rpx; }
+.m-i { font-size: 48rpx; margin-bottom: 10rpx; }
+.m-t { font-size: 24rpx; color: #333; }
 
-.avatar {
-  display: block;
-  width: 56px;
-  height: 56px;
-}
+/* 课程卡片 */
+.hot { padding: 30rpx; }
+.hot-h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30rpx; }
+.h-l { font-size: 34rpx; font-weight: bold; display: flex; align-items: center; }
+.line { width: 8rpx; height: 32rpx; background: #6c5ce7; border-radius: 4rpx; margin-right: 15rpx; }
+.h-r { font-size: 24rpx; color: #999; }
 
-.nickname-wrapper {
-  display: flex;
-  width: 100%;
-  padding: 16px;
-  box-sizing: border-box;
-  border-top: .5px solid rgba(0, 0, 0, 0.1);
-  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
-  color: black;
-}
+.c-card { background: #fff; border-radius: 24rpx; padding: 24rpx; display: flex; }
+.c-l { width: 200rpx; height: 200rpx; background: #eee; border-radius: 16rpx; position: relative; overflow: hidden; }
+.c-l image { width: 100%; height: 100%; }
+.c-tag { position: absolute; top: 0; left: 0; background: #6c5ce7; color: #fff; font-size: 20rpx; padding: 4rpx 12rpx; border-bottom-right-radius: 12rpx; }
 
-.nickname-label {
-  width: 105px;
-}
-
-.nickname-input {
-  flex: 1;
-}
+.c-r { flex: 1; margin-left: 24rpx; display: flex; flex-direction: column; }
+.c-title { font-size: 32rpx; font-weight: bold; }
+.c-label { font-size: 20rpx; color: #6c5ce7; background: #f3f0ff; padding: 2rpx 12rpx; border-radius: 4rpx; width: fit-content; margin: 10rpx 0; }
+.c-desc { font-size: 24rpx; color: #999; margin-bottom: 10rpx; }
+.c-f { display: flex; justify-content: space-between; align-items: flex-end; }
+.c-p { color: #6c5ce7; font-size: 24rpx; font-weight: bold; }
+.c-p text { font-size: 40rpx; }
+.c-btn { background: #6c5ce7; color: #fff; font-size: 26rpx; padding: 12rpx 36rpx; border-radius: 30rpx; }

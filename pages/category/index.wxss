@@ -1,0 +1,70 @@
+page { background: #f8f9fb; }
+
+.fixed-top {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: #fff; z-index: 1000;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.02); /* 加一点阴影增加高级感 */
+}
+
+/* 搜索行适配 */
+.nav-bar {
+  display: flex; align-items: center;
+  padding: 0 20rpx;
+}
+
+.back-area {
+  width: 70rpx; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* 精致的自定义返回箭头 */
+.custom-back-icon {
+  width: 20rpx; height: 20rpx;
+  border-left: 4rpx solid #333;
+  border-bottom: 4rpx solid #333;
+  transform: rotate(45deg);
+}
+
+.search-outer {
+  height: 72rpx; /* 稍微加高一点，更协调 */
+}
+
+.search-inner {
+  background: #f4f5f7;
+  height: 100%; border-radius: 36rpx;
+  display: flex; align-items: center; padding: 0 30rpx;
+}
+
+.search-inner input {
+  flex: 1; font-size: 28rpx; margin-left: 12rpx;
+}
+
+/* Tab 栏协调性修复 */
+.tab-strip {
+  white-space: nowrap; height: 100rpx; /* 增加高度 */
+  display: flex; align-items: center;
+  padding: 0 10rpx;
+}
+
+.tab-btn {
+  display: inline-block;
+  padding: 12rpx 32rpx; margin: 0 12rpx;
+  background: #f5f6f8; border-radius: 32rpx;
+  font-size: 26rpx; color: #666;
+  border: 1rpx solid transparent;
+}
+
+/* 还原设计稿的蓝色选中态 */
+.tab-btn.active {
+  background: #fff;
+  color: #3a86ff;
+  border: 2rpx solid #3a86ff; /* 蓝色细边框 */
+  font-weight: 500;
+}
+
+/* 缺省页样式 */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  color: #c0c4cc; padding-top: 300rpx;
+}
+.sad-face { font-size: 120rpx; margin-bottom: 20rpx; opacity: 0.5; }

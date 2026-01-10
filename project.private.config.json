@@ -18,5 +18,46 @@
     "checkInvalidKey": true,
     "ignoreDevUnusedFiles": true
   },
-  "libVersion": "3.13.1"
+  "libVersion": "3.13.1",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/category/index",
+          "pathName": "pages/category/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/me/index",
+          "pathName": "pages/me/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/logs/logs",
+          "pathName": "pages/logs/logs",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/logs/logs",
+          "pathName": "pages/logs/logs",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
