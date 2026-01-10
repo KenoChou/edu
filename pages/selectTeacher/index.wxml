@@ -1,0 +1,41 @@
+<view class="page-container">
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px">
+    <view class="nav-content" style="height: {{navHeight}}px">
+      <view class="back-action" bindtap="goBack">
+        <view class="back-arrow-black"></view>
+      </view>
+      <text class="nav-title">选择授课老师</text>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="list-container" style="margin-top: {{statusBarHeight + navHeight}}px">
+    
+    <view class="teacher-card active" bindtap="onSelect" data-id="ai">
+      <view class="ai-box">🤖</view>
+      <view class="info-content">
+        <view class="main-name">系统智能推荐</view>
+        <view class="sub-text">快速匹配 · 优选师资</view>
+      </view>
+      <view class="check-circle active"></view>
+    </view>
+
+    <view class="teacher-card" bindtap="onSelect" data-id="teacher1">
+      <view class="avatar-zh">ZH</view>
+      <view class="info-content">
+        <view class="name-row">
+          <text class="main-name">张雅琴</text>
+          <text class="star-label">★ 5</text>
+        </view>
+        <view class="tags">
+          <text class="tag-item">中央音乐学院</text>
+          <text class="tag-item">5年教龄</text>
+        </view>
+      </view>
+      <view class="right-action-area">
+        <view class="cert-link-btn" catchtap="viewCert">查看资质</view>
+        <view class="check-circle"></view>
+      </view>
+    </view>
+
+  </scroll-view>
+</view>

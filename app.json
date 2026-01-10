@@ -1,15 +1,43 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
+    "pages/category/index",
     "pages/me/index",
-    "pages/category/index"
+    "pages/detail/index",
+    "pages/selectTeacher/index",
+    "pages/calendar/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Weixin",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#3a86ff",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "选课",
+        "iconPath": "assets/tabbar/home.png",
+        "selectedIconPath": "assets/tabbar/home_active .png"
+      },
+      {
+        "pagePath": "pages/calendar/index",
+        "text": "课表",
+        "iconPath": "assets/tabbar/calendar.png",
+        "selectedIconPath": "assets/tabbar/calendar_active.png"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "text": "我的",
+        "iconPath": "assets/tabbar/user.png",
+        "selectedIconPath": "assets/tabbar/user_active.png"
+      }
+    ]
   },
   "style": "v2",
   "componentFramework": "glass-easel",

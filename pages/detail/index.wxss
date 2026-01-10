@@ -1,0 +1,82 @@
+page { background: #f8f9fb; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+
+/* 沉浸式返回键：柔和磨砂感 */
+.nav-overlay { position: fixed; left: 32rpx; z-index: 1000; display: flex; align-items: center; }
+.glass-back {
+  width: 68rpx; height: 68rpx;
+  background: rgba(0, 0, 0, 0.15); /* 调低不透明度，更清透 */
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.arrow-white {
+  width: 18rpx; height: 18rpx;
+  border-left: 4rpx solid #fff; border-bottom: 4rpx solid #fff;
+  transform: rotate(45deg); margin-left: 8rpx;
+}
+
+/* 头部大图沉浸式 */
+.hero-section { width: 100%; height: 580rpx; position: relative; }
+.hero-image { width: 100%; height: 100%; }
+.hero-gradient-top {
+  position: absolute; top: 0; left: 0; right: 0; height: 180rpx;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25), transparent);
+}
+.hero-gradient-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 120rpx;
+  background: linear-gradient(to top, #f8f9fb, transparent);
+}
+
+/* 主体卡片设计 */
+.main-body { position: relative; z-index: 2; margin-top: -80rpx; padding: 0 30rpx 200rpx; }
+.card { background: #fff; border-radius: 32rpx; padding: 32rpx; margin-bottom: 24rpx; }
+.card-title-row { display: flex; justify-content: space-between; align-items: flex-start; }
+.course-name { font-size: 44rpx; font-weight: bold; color: #1a1a1a; flex: 1; }
+.price-info { text-align: right; color: #5e5ce6; margin-left: 20rpx; }
+.price-info .yen { font-size: 28rpx; margin-right: 4rpx; }
+.price-info .num { font-size: 52rpx; font-weight: bold; }
+.price-info .unit { font-size: 24rpx; color: #999; }
+
+.tag-row { display: flex; flex-wrap: wrap; margin-top: 24rpx; }
+.tag-purple {
+  font-size: 22rpx; color: #5e5ce6; background: #f0efff;
+  padding: 8rpx 20rpx; border-radius: 8rpx; margin-right: 16rpx;
+}
+
+/* 板块装饰 */
+.sec-header { display: flex; align-items: center; margin-bottom: 24rpx; position: relative; }
+.indicator { width: 8rpx; height: 32rpx; background: #5e5ce6; border-radius: 4rpx; margin-right: 16rpx; }
+.sec-header text { font-size: 32rpx; font-weight: bold; color: #333; }
+.sec-content { font-size: 28rpx; color: #666; line-height: 1.7; }
+.change-btn {
+  position: absolute; right: 0; font-size: 24rpx; color: #5e5ce6;
+  background: #f0efff; padding: 6rpx 20rpx; border-radius: 20rpx;
+}
+
+/* 智能推荐样式调优 */
+.ai-box {
+  background: #f9f9ff; border: 1rpx solid #e0e0ff; border-radius: 24rpx;
+  padding: 24rpx; display: flex; align-items: center;
+}
+.ai-avatar { width: 88rpx; height: 88rpx; background: #eeecff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40rpx; }
+.ai-info { flex: 1; margin-left: 20rpx; }
+.ai-name { font-size: 30rpx; font-weight: bold; color: #333; }
+.ai-tips { font-size: 24rpx; color: #999; margin-top: 4rpx; }
+.ai-arrow { width: 14rpx; height: 14rpx; border-top: 3rpx solid #ccc; border-right: 3rpx solid #ccc; transform: rotate(45deg); }
+
+/* 底部工具栏：解决间距问题 */
+.bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; height: calc(120rpx + env(safe-area-inset-bottom));
+  background: #fff; display: flex; align-items: center; padding: 0 40rpx env(safe-area-inset-bottom);
+  box-shadow: 0 -8rpx 30rpx rgba(0,0,0,0.05); z-index: 1000;
+}
+.action-icons { display: flex; align-items: center; padding-right: 20rpx; }
+.icon-unit { display: flex; flex-direction: column; align-items: center; margin-right: 48rpx; }
+.icon-img { font-size: 40rpx; line-height: 1; }
+.icon-unit text { font-size: 22rpx; color: #666; margin-top: 8rpx; }
+.order-submit-btn {
+  flex: 1; background: #5e5ce6; color: #fff; height: 92rpx;
+  border-radius: 46rpx; font-weight: bold; font-size: 32rpx;
+  display: flex; align-items: center; justify-content: center;
+  border: none; margin: 0;
+}

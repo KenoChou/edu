@@ -1,0 +1,69 @@
+<view class="page-container">
+  <view class="nav-overlay" style="top: {{statusBarHeight}}px; height: {{navHeight}}px">
+    <view class="glass-back" bindtap="goBack">
+      <view class="arrow-white"></view>
+    </view>
+  </view>
+
+  <view class="hero-section">
+    <image class="hero-image" src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800" mode="aspectFill"></image>
+    <view class="hero-gradient-top"></view>
+    <view class="hero-gradient-bottom"></view>
+  </view>
+
+  <view class="main-body">
+    <view class="card price-card">
+      <view class="card-title-row">
+        <text class="course-name">少儿钢琴启蒙</text>
+        <view class="price-info">
+          <text class="yen">¥</text>
+          <text class="num">200</text>
+          <text class="unit">/课时</text>
+        </view>
+      </view>
+      <view class="tag-row">
+        <text class="tag-purple">线下授课</text>
+        <text class="tag-purple">含教材</text>
+        <text class="tag-purple">随时退</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="sec-header">
+        <view class="indicator"></view>
+        <text>课程介绍</text>
+      </view>
+      <view class="sec-content">菲伯尔教学法，通过趣味识谱和律动练习，让孩子在快乐中开启音乐之旅。课程包含基础乐理与初步弹奏技巧。</view>
+    </view>
+
+    <view class="card teacher-card">
+      <view class="sec-header">
+        <view class="indicator"></view>
+        <text>授课老师</text>
+        <view class="change-btn" bindtap="onChangeTeacher">更换 ></view>
+      </view>
+      <view class="ai-box">
+        <view class="ai-avatar">🤖</view>
+        <view class="ai-info">
+          <view class="ai-name">系统智能推荐</view>
+          <view class="ai-tips">根据您的需求匹配最合适的老师</view>
+        </view>
+        <view class="ai-arrow"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-bar">
+    <view class="action-icons">
+      <view class="icon-unit">
+        <view class="icon-img">💬</view>
+        <text>咨询</text>
+      </view>
+      <view class="icon-unit">
+        <view class="icon-img">⭐</view>
+        <text>收藏</text>
+      </view>
+    </view>
+    <button class="order-submit-btn">立即预订</button>
+  </view>
+</view>
