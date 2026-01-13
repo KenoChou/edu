@@ -1,0 +1,108 @@
+page {
+  background-color: #f7f8fa;
+  width: 100%;
+  height: 100%;
+}
+
+.page-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 导航栏样式修复 */
+.header-nav {
+  width: 100%;
+  background-color: #f7f8fa;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+}
+
+.back-icon { font-size: 44rpx; font-weight: bold; width: 60rpx; }
+.nav-title { font-size: 34rpx; font-weight: bold; }
+
+/* 内容主体 */
+.scroll-body {
+  padding: 30rpx 32rpx;
+  width: 100%;
+  box-sizing: border-box; /* 解决宽度溢出的关键 */
+}
+
+/* 概览卡片 */
+.summary-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.02);
+}
+
+.score-row { display: flex; align-items: center; }
+.score-big { font-size: 72rpx; font-weight: bold; color: #ff9500; margin-right: 30rpx; }
+.stars { font-size: 24rpx; margin-bottom: 8rpx; }
+.count-txt { font-size: 24rpx; color: #999; }
+
+/* 筛选标签页 */
+.tab-scroll { display: flex; flex-wrap: wrap; margin-bottom: 30rpx; }
+.tab-pill {
+  padding: 12rpx 28rpx;
+  background: #fff;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+  color: #666;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+  border: 1rpx solid #eee;
+}
+.tab-pill.active {
+  background: #6b5af0;
+  color: #fff;
+  border-color: #6b5af0;
+}
+
+/* 评价项卡片 */
+.eval-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+}
+
+.user-info { display: flex; align-items: center; margin-bottom: 20rpx; }
+.u-avatar {
+  width: 80rpx; height: 80rpx; border-radius: 50%;
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: bold; margin-right: 20rpx;
+}
+
+.u-main { flex: 1; }
+.u-name-row { display: flex; justify-content: space-between; align-items: baseline; }
+.u-name { font-size: 28rpx; font-weight: bold; color: #333; }
+.u-course { font-size: 24rpx; font-weight: normal; color: #999; }
+.u-date { font-size: 22rpx; color: #ccc; }
+.u-star-row { font-size: 24rpx; color: #ff9500; margin-top: 4rpx; }
+
+.eval-text {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.6;
+  margin: 16rpx 0;
+}
+
+.tags-row { display: flex; flex-wrap: wrap; }
+.mini-tag {
+  font-size: 20rpx;
+  color: #6b5af0;
+  background: #f0eeff;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+  margin-right: 12rpx;
+}

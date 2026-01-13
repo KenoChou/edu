@@ -3,9 +3,22 @@
     "pages/index/index",
     "pages/category/index",
     "pages/me/index",
+    "pages/logs/logs",
     "pages/detail/index",
     "pages/selectTeacher/index",
-    "pages/calendar/index"
+    "pages/calendar/index",
+    "pages/income/index",
+    "pages/apply/index",
+    "pages/account/index",
+    "pages/students/index",
+    "pages/certs/index",
+    "pages/notice/index",
+    "pages/eval/index",
+    "pages/record/index",
+    "pages/child/index",
+    "pages/order/index",
+    "pages/verify/index",
+    "pages/login/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

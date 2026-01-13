@@ -1,0 +1,27 @@
+<view class="page-root">
+  <view class="header" style="padding-top: {{menuTop}}px;">
+    <view class="nav-bar" style="height: {{menuHeight}}px;">
+      <view class="back-btn" bindtap="goBack">←</view>
+      <text class="nav-title">资质管理</text>
+    </view>
+  </view>
+
+  <view class="main-body">
+    <view class="tips">完善资质认证，有助于提升学员对您的信任度。</view>
+
+    <view class="cert-card" wx:for="{{certList}}" wx:key="id">
+      <view class="cert-info">
+        <text class="cert-name">{{item.name}}</text>
+        <text class="cert-status {{item.status == '已认证' ? 'success' : 'pending'}}">{{item.status}}</text>
+      </view>
+      <view class="cert-date">获得日期：{{item.date}}</view>
+      <image wx:if="{{item.image}}" class="cert-img" src="{{item.image}}" mode="aspectFill"></image>
+      <view wx:else class="cert-placeholder">图片审核中...</view>
+    </view>
+
+    <view class="upload-box" bindtap="uploadCert">
+      <view class="plus">+</view>
+      <view class="upload-text">添加新的资质/证书</view>
+    </view>
+  </view>
+</view>

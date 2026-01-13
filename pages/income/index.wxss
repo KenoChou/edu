@@ -1,0 +1,85 @@
+/* 彻底消除顶部白色的关键 */
+page {
+  background-color: #f7f8fa;
+  height: 100%;
+}
+
+.page-container {
+  width: 100%;
+}
+
+/* 绿色头部：确保没有 margin-top，且背景色覆盖到屏幕最顶 */
+.header-section {
+  background-color: #2d7d52;
+  width: 100%;
+  margin-top: 0;
+  padding-bottom: 120rpx;
+  box-sizing: border-box;
+}
+
+/* 导航栏对齐：利用 padding-top 避开状态栏 */
+.custom-nav {
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+}
+
+/* 深绿色圆形返回按钮 */
+.back-circle {
+  width: 60rpx;
+  height: 60rpx;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20rpx;
+}
+
+.arrow { color: #fff; font-size: 34rpx; font-weight: bold; }
+.nav-title { color: #fff; font-size: 34rpx; font-weight: bold; }
+
+.income-info {
+  text-align: center;
+  color: #fff;
+  padding-top: 60rpx;
+}
+
+.income-info .label { font-size: 26rpx; opacity: 0.85; }
+.income-info .amount { font-size: 76rpx; font-weight: bold; margin-top: 15rpx; }
+
+/* 结算卡片悬浮效果 */
+.summary-card {
+  background: #fff;
+  width: 690rpx;
+  margin: -80rpx auto 0;
+  height: 170rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+.card-item { flex: 1; text-align: center; }
+.v-line { width: 1rpx; height: 60rpx; background: #eee; }
+.s-label { font-size: 24rpx; color: #999; margin-bottom: 10rpx; display: block; }
+.s-val { font-size: 38rpx; font-weight: bold; color: #333; }
+.green-text { color: #2d7d52; }
+
+/* 列表样式 */
+.detail-section { padding: 40rpx 30rpx; }
+.section-title { font-size: 30rpx; font-weight: bold; margin-bottom: 25rpx; }
+.list-card { background: #fff; border-radius: 20rpx; overflow: hidden; }
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+.list-item:last-child { border-bottom: none; }
+.name { display: block; font-size: 28rpx; color: #333; margin-bottom: 10rpx; }
+.time { font-size: 24rpx; color: #999; }
+.item-right { color: #2d7d52; font-weight: bold; font-size: 34rpx; }

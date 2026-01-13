@@ -1,0 +1,22 @@
+.tab-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 100rpx; background: white;
+  display: flex; padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1rpx solid #eaeaea;
+}
+.tab-bar-item {
+  flex: 1; text-align: center;
+  display: flex; justify-content: center; align-items: center; flex-direction: column;
+}
+.tab-icon {
+  width: 50rpx; height: 50rpx;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* 丝滑过渡 */
+}
+/* 选中时的图标弹跳放大效果 */
+.active-scale {
+  transform: scale(1.15);
+}
+.tab-text {
+  font-size: 20rpx; margin-top: 6rpx;
+  transition: color 0.2s ease;
+}

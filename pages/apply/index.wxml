@@ -1,0 +1,43 @@
+<view class="page-container">
+  <view class="custom-header" style="padding-top: {{menuTop}}px; height: {{menuHeight}}px;">
+    <view class="nav-content">
+      <view class="back-icon" bindtap="goBack">
+        <text class="arrow">←</text>
+      </view>
+      <text class="nav-title">请假/调课申请</text>
+    </view>
+  </view>
+
+  <view class="form-body">
+    <view class="section">
+      <view class="section-label">申请类型</view>
+      <view class="type-row">
+        <view 
+          wx:for="{{typeList}}" 
+          wx:key="index"
+          class="type-tag {{activeType === index ? 'active' : ''}}"
+          bindtap="selectType"
+          data-index="{{index}}"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <view class="time-flex">
+      <view class="time-box">
+        <view class="section-label">开始时间</view>
+        <view class="input-unit">年 /月/日 --:--</view>
+      </view>
+      <view class="time-box">
+        <view class="section-label">结束时间</view>
+        <view class="input-unit">年 /月/日 --:--</view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-label">申请原因</view>
+      <textarea class="reason-area" placeholder="请详细说明原因..." placeholder-class="ph-color"></textarea>
+    </view>
+
+    <button class="submit-btn">提交申请</button>
+  </view>
+</view>

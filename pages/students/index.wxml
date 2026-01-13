@@ -1,0 +1,31 @@
+<view class="page-root">
+  <view class="header" style="padding-top: {{menuTop}}px;">
+    <view class="nav-bar" style="height: {{menuHeight}}px;">
+      <view class="back-btn" bindtap="goBack">←</view>
+      <text class="nav-title">我的学员</text>
+    </view>
+  </view>
+
+  <view class="main-body">
+    <view class="search-box">
+      <icon type="search" size="16" color="#999"></icon>
+      <input type="text" placeholder="搜索学员姓名" placeholder-class="p-class" />
+    </view>
+
+    <view class="student-list">
+      <view class="student-item" wx:for="{{studentList}}" wx:key="id">
+        <view class="avatar">{{item.name[0]}}</view>
+        
+        <view class="info-area">
+          <view class="name-row">
+            <text class="name">{{item.name}}</text>
+            <text class="tag {{item.status == '在读' ? 'active-tag' : 'end-tag'}}">{{item.status}}</text>
+          </view>
+          <view class="detail">{{item.level}} · {{item.info}}</view>
+        </view>
+
+        <view class="arrow-icon">></view>
+      </view>
+    </view>
+  </view>
+</view>

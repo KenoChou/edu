@@ -1,0 +1,42 @@
+<view class="page-container">
+  <view class="custom-header" style="padding-top: {{navTop}}px; height: {{navHeight}}px;">
+    <view class="header-content">
+      <view class="back-btn" bindtap="goBack">←</view>
+      <text class="page-title">课时记录</text>
+    </view>
+  </view>
+
+  <view class="content-body">
+    <view class="summary-card">
+      <view class="main-balance">
+        <text class="num">{{remaining}}</text>
+        <text class="unit">剩余总课时</text>
+      </view>
+      <view class="sub-info">
+        <view class="info-item">
+          <text class="v">{{totalLessons}}</text>
+          <text class="l">总课时</text>
+        </view>
+        <view class="divider"></view>
+        <view class="info-item">
+          <text class="v">{{usedLessons}}</text>
+          <text class="l">已上课</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="list-title">记录明细</view>
+    <view class="record-list">
+      <view class="record-item" wx:for="{{records}}" wx:key="id">
+        <view class="item-left">
+          <text class="item-name">{{item.title}}</text>
+          <text class="item-time">{{item.date}}</text>
+        </view>
+        <view class="item-right">
+          <text class="amount {{item.cost > 0 ? 'plus' : 'minus'}}">{{item.cost > 0 ? '+' : ''}}{{item.cost}}</text>
+          <text class="status">{{item.status}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+<view class="page-wrapper">
+  <view class="header-nav" style="padding-top: {{navTop}}px; height: {{navHeight}}px;">
+    <view class="nav-content">
+      <view class="back-icon" bindtap="goBack">←</view>
+      <text class="nav-title">评价中心</text>
+    </view>
+  </view>
+
+  <view class="scroll-body">
+    <view class="summary-card">
+      <view class="score-row">
+        <text class="score-big">4.9</text>
+        <view class="score-right">
+          <view class="stars">⭐⭐⭐⭐⭐</view>
+          <text class="count-txt">共 128 条学员评价记录</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="tab-scroll">
+      <view wx:for="{{tabs}}" wx:key="index" 
+            class="tab-pill {{activeTab == index ? 'active' : ''}}"
+            bindtap="switchTab" data-index="{{index}}">
+        {{item}}
+      </view>
+    </view>
+
+    <view class="list-container">
+      <view class="eval-card" wx:for="{{evalList}}" wx:key="id">
+        <view class="user-info">
+          <view class="u-avatar" style="background: {{item.avatarBg}}">{{item.avatar}}</view>
+          <view class="u-main">
+            <view class="u-name-row">
+              <text class="u-name">{{item.name}} <text class="u-course">({{item.course}})</text></text>
+              <text class="u-date">{{item.date}}</text>
+            </view>
+            <view class="u-star-row">⭐ {{item.score}}.0</view>
+          </view>
+        </view>
+        <view class="eval-text">{{item.content}}</view>
+        <view class="tags-row">
+          <text class="mini-tag" wx:for="{{item.tags}}" wx:for-item="t" wx:key="*this">{{t}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

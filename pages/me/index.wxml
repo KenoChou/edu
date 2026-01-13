@@ -69,7 +69,7 @@
     </view>
 
     <view class="card list-card">
-      <view class="list-item" wx:for="{{['实名认证','账号与安全','联系客服','关于优智艺体']}}" wx:key="*this">
+      <view class="list-item" wx:for="{{['实名认证','账号与安全','联系客服','关于']}}" wx:key="*this">
         <view class="li-left">
           <text class="li-icon">🛡️</text>
           <text>{{item}}</text>

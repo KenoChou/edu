@@ -1,0 +1,119 @@
+page {
+  background-color: #f7f8fa;
+  width: 100%;
+}
+
+.page-container {
+  width: 100%;
+}
+
+/* 沉浸式导航：背景设为白色并覆盖到顶 */
+.custom-header {
+  background-color: #ffffff;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  box-sizing: content-box; /* 确保padding-top不压缩内容 */
+  padding-bottom: 20rpx;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+  width: 100%;
+}
+
+.back-icon {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  margin-right: 12rpx;
+}
+
+.nav-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 表单布局修复 */
+.form-body {
+  padding: 40rpx 32rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section { margin-bottom: 48rpx; }
+.section-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.type-row { display: flex; }
+.type-tag {
+  padding: 16rpx 48rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  margin-right: 24rpx;
+  font-size: 26rpx;
+  color: #333;
+  border: 1rpx solid #eee;
+}
+
+.type-tag.active {
+  background: #6b5af0; /* 紫色主色 */
+  color: #fff;
+  border-color: #6b5af0;
+  box-shadow: 0 8rpx 16rpx rgba(107, 90, 240, 0.2);
+}
+
+.time-flex {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48rpx;
+}
+
+.time-box { width: 47%; }
+.input-unit {
+  background: #fff;
+  padding: 24rpx 20rpx;
+  border-radius: 12rpx;
+  border: 1rpx solid #eee;
+  font-size: 24rpx;
+  color: #ccc;
+}
+
+.reason-area {
+  width: 100%;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  border: 1rpx solid #eee;
+  box-sizing: border-box;
+  height: 240rpx;
+  font-size: 28rpx;
+}
+
+.submit-btn {
+  margin-top: 80rpx;
+  background: #6b5af0;
+  color: #fff;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  font-weight: 600;
+  box-shadow: 0 12rpx 24rpx rgba(107, 90, 240, 0.25);
+}

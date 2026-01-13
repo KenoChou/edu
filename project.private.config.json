@@ -23,11 +23,95 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/selectTeacher/index",
-          "pathName": "pages/selectTeacher/index",
+          "name": "pages/login/index",
+          "pathName": "pages/login/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/verify/index",
+          "pathName": "pages/verify/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/child/index",
+          "pathName": "pages/child/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/record/index",
+          "pathName": "pages/record/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/eval/index",
+          "pathName": "pages/eval/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/notice/index",
+          "pathName": "pages/notice/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/certs/index",
+          "pathName": "pages/certs/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/students/index",
+          "pathName": "pages/students/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/account/index",
+          "pathName": "pages/account/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/apply/index",
+          "pathName": "pages/apply/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/income/index",
+          "pathName": "pages/income/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/selectTeacher/index",
+          "pathName": "pages/selectTeacher/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/detail/index",

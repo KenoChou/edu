@@ -1,0 +1,45 @@
+page { background-color: #FFFFFF; }
+
+.login-container { width: 100%; }
+
+.nav-bar { display: flex; align-items: center; padding: 0 40rpx; }
+.back-icon { font-size: 40rpx; color: #1E293B; font-weight: bold; }
+
+.login-content { padding: 80rpx 60rpx; }
+
+.welcome-section { margin-bottom: 100rpx; }
+.main-title { font-size: 56rpx; font-weight: 700; color: #0F172A; display: block; margin-bottom: 16rpx; }
+.sub-title { font-size: 28rpx; color: #94A3B8; }
+
+/* 输入框组合 */
+.login-form { margin-bottom: 60rpx; }
+.input-group {
+  display: flex; align-items: center; height: 110rpx;
+  border-bottom: 2rpx solid #F1F5F9; margin-bottom: 20rpx;
+}
+.prefix { font-size: 32rpx; font-weight: 600; color: #1E293B; margin-right: 30rpx; }
+.f-input { flex: 1; font-size: 32rpx; color: #1E293B; }
+.p-style { color: #CBD5E1; }
+
+.get-code { font-size: 28rpx; color: #3B82F6; font-weight: 500; padding: 10rpx 0; }
+.get-code.disabled { color: #94A3B8; }
+
+/* 登录主按钮 */
+.login-btn {
+  height: 100rpx; line-height: 100rpx; background: #DBEAFE; color: #FFFFFF;
+  border-radius: 50rpx; font-size: 32rpx; font-weight: 600; margin-top: 40rpx;
+  border: none; transition: all 0.3s;
+}
+.login-btn.active { background: #3B82F6; box-shadow: 0 10rpx 20rpx rgba(59, 130, 246, 0.2); }
+
+/* 微信登录区 */
+.other-login { display: flex; align-items: center; justify-content: center; margin-top: 120rpx; margin-bottom: 40rpx; }
+.divider { width: 60rpx; height: 1rpx; background: #E2E8F0; }
+.other-txt { font-size: 24rpx; color: #94A3B8; margin: 0 20rpx; }
+
+.wx-login-btn {
+  background: #F8FAFC; color: #1E293B; font-size: 28rpx; font-weight: 500;
+  height: 90rpx; line-height: 90rpx; border-radius: 45rpx;
+  display: flex; align-items: center; justify-content: center;
+}
+.wx-icon { width: 36rpx; height: 36rpx; margin-right: 16rpx; }

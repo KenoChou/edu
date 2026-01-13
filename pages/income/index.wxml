@@ -1,0 +1,40 @@
+<view class="page-container">
+  <view class="header-section">
+    <view class="custom-nav" style="padding-top: {{menuTop}}px; height: {{menuHeight}}px;">
+      <view class="back-circle" bindtap="goBack">
+        <text class="arrow">←</text>
+      </view>
+      <text class="nav-title">我的收入</text>
+    </view>
+
+    <view class="income-info">
+      <view class="label">本月预估收入 (元)</view>
+      <view class="amount">8,240.00</view>
+    </view>
+  </view>
+
+  <view class="summary-card">
+    <view class="card-item">
+      <text class="s-label">已结算</text>
+      <text class="s-val">6,000</text>
+    </view>
+    <view class="v-line"></view>
+    <view class="card-item">
+      <text class="s-label">待结算</text>
+      <text class="s-val green-text">2,240</text>
+    </view>
+  </view>
+
+  <view class="detail-section">
+    <view class="section-title">明细记录</view>
+    <view class="list-card">
+      <view class="list-item" wx:for="{{incomeData}}" wx:key="id">
+        <view class="item-left">
+          <text class="name">{{item.title}}</text>
+          <text class="time">{{item.date}}</text>
+        </view>
+        <view class="item-right">+{{item.amount}}</view>
+      </view>
+    </view>
+  </view>
+</view>

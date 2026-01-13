@@ -1,0 +1,40 @@
+<view class="login-container">
+  <view class="nav-bar" style="padding-top: {{navTop}}px; height: {{navHeight}}px;">
+    <view class="back-icon" bindtap="goBack">〈</view>
+  </view>
+
+  <view class="login-content">
+    <view class="welcome-section">
+      <text class="main-title">欢迎登录</text>
+      <text class="sub-title">专注孩子成长的每一分进步</text>
+    </view>
+
+    <view class="login-form">
+      <view class="input-group">
+        <text class="prefix">+86</text>
+        <input class="f-input" type="number" maxlength="11" placeholder="请输入手机号" 
+               placeholder-class="p-style" model:value="{{phone}}" />
+      </view>
+
+      <view class="input-group">
+        <input class="f-input" type="number" maxlength="6" placeholder="请输入验证码" 
+               placeholder-class="p-style" model:value="{{code}}" />
+        <text class="get-code {{isCounting ? 'disabled' : ''}}" bindtap="getCode">{{codeText}}</text>
+      </view>
+    </view>
+
+    <button class="login-btn {{phone.length==11 && code.length>=4 ? 'active' : ''}}" 
+            bindtap="handleLogin">进入系统</button>
+
+    <view class="other-login">
+      <view class="divider"></view>
+      <text class="other-txt">快捷方式</text>
+      <view class="divider"></view>
+    </view>
+    
+    <button class="wx-login-btn">
+      <image class="wx-icon" src="/assets/icons/wechat.png"></image>
+      微信一键授权
+    </button>
+  </view>
+</view>

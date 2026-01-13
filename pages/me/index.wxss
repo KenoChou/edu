@@ -1,5 +1,5 @@
 page { background-color: #f7f8fa; }
-
+.li-icon{  margin-right: 24rpx;}
 /* 主题渐变还原 */
 .theme-parent .header-bg { background: linear-gradient(180deg, #f39c12 0%, #ffb347 100%); }
 .theme-teacher .header-bg { background: linear-gradient(180deg, #3a86ff 0%, #52b1ff 100%); }
