@@ -37,6 +37,6 @@
   </view>
 
   <view class="footer-action">
-    <button class="confirm-btn">确认支付</button>
-  </view>
+  <button class="confirm-btn" bindtap="handlePay">确认支付</button>
+</view>
 </view>
