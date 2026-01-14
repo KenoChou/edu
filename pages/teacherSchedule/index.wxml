@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="nav-fixed" style="padding-top: {{navTop}}px; height: {{navHeight}}px;">
+    <view class="nav-inner">
+      <view class="back-btn" bindtap="goBack">〈</view>
+      <view class="nav-title">教学记录</view>
+    </view>
+  </view>
+
+  <view class="main-content" style="padding-top: {{navTop + navHeight + 15}}px;">
+    <view class="month-label">2026年 1月</view>
+    
+    <view class="timeline-box">
+      <view class="item-block" wx:for="{{historyClasses}}" wx:key="id">
+        <view class="axis-left">
+          <view class="dot {{index==0?'active':''}}"></view>
+          <view class="line"></view>
+        </view>
+        
+        <view class="axis-right">
+          <view class="card-header-info">
+            <text class="date-txt">{{item.date}}</text>
+            <text class="time-txt">{{item.time}}</text>
+          </view>
+          
+          <view class="expanded-card">
+            <view class="main-info">
+              <text class="c-title">{{item.course}}</text>
+              <view class="stu-tag">学员：{{item.student}}</view>
+            </view>
+            
+            <view class="data-preview">
+              <view class="preview-row">
+                <text class="label">教学重点</text>
+                <text class="val">哈农练指法 1-5节、c大调音阶</text>
+              </view>
+              <view class="preview-row">
+                <text class="label">本堂点评</text>
+                <text class="val">手型稳定有进步，但三指转弯稍显僵硬。</text>
+              </view>
+              <view class="preview-row">
+                <text class="label">课后作业</text>
+                <text class="val">每天练习音阶15分钟，注意触键力度。</text>
+              </view>
+            </view>
+            
+            <view class="card-footer">
+              <view class="rating-stars">
+                表现：<text class="star">★★★★★</text>
+              </view>
+              <view class="more-link">详情 〉</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

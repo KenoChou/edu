@@ -1,0 +1,45 @@
+<view class="screen-container">
+  <view class="nav-fixed" style="padding-top: {{navTop}}px; height: {{navHeight}}px;">
+    <view class="nav-inner">
+      <view class="back-btn" bindtap="goBack">〈</view>
+      <view class="nav-title">我的学员</view>
+    </view>
+  </view>
+
+  <view class="full-content" style="padding-top: {{navTop + navHeight}}px;">
+    
+    <view class="hero-banner">
+      <view class="hero-item">
+        <text class="v">42</text>
+        <text class="l">TOTAL STUDENTS</text>
+      </view>
+      <view class="hero-sep"></view>
+      <view class="hero-item">
+        <text class="v">156</text>
+        <text class="l">MONTHLY HOURS</text>
+      </view>
+    </view>
+
+    <view class="edge-to-edge-list">
+      <view class="stu-row" wx:for="{{studentList}}" wx:key="id">
+        <view class="row-left">
+          <view class="avatar-tag">{{item.name[0]}}</view>
+          <view class="name-box">
+            <text class="n">{{item.name}}</text>
+            <text class="c">{{item.level}}</text>
+          </view>
+        </view>
+        
+        <view class="row-right">
+          <view class="hrs-circle">
+            <text class="val">{{item.rem}}</text>
+            <text class="unit">HRS</text>
+          </view>
+          <text class="date">LAST: 01.14</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="database-footer">DATABASE ENDS HERE</view>
+  </view>
+</view>

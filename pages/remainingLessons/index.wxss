@@ -1,0 +1,52 @@
+page { background: #FFFFFF; }
+
+/* 关键：让蓝色背景从最顶部（状态栏）一直延伸下来 */
+.immersion-header {
+  width: 100vw;
+  background-color: #F0F7FF; /* 统一的淡蓝色 */
+  padding-bottom: 60rpx;
+  position: relative;
+}
+
+/* 导航栏不再用白色背景，设为透明 */
+.custom-nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+.back-area {
+  padding: 0 40rpx;
+  position: absolute; left: 0; z-index: 10;
+}
+.back-icon { font-size: 38rpx; color: #3B82F6; font-weight: bold; }
+.nav-title {
+  width: 100%; text-align: center;
+  font-size: 30rpx; font-weight: 700; color: #1E293B;
+}
+
+/* 余额区：不再需要 margin-top，直接自然衔接 */
+.balance-main {
+  text-align: center;
+  padding-top: 40rpx;
+}
+.balance-main .label { font-size: 24rpx; color: #64748B; letter-spacing: 2rpx; }
+.num-box { margin: 15rpx 0; display: flex; align-items: baseline; justify-content: center; }
+.big-num { font-size: 110rpx; font-weight: 800; color: #1E293B; line-height: 1; }
+.unit { font-size: 32rpx; color: #1E293B; margin-left: 10rpx; font-weight: 600; }
+.date-tag { font-size: 20rpx; color: #94A3B8; }
+
+/* 列表区 */
+.log-container { width: 100%; background: #fff; }
+.list-head {
+  padding: 40rpx; font-size: 20rpx; color: #CBD5E1; font-weight: 800;
+  border-bottom: 1rpx solid #F8FAFC;
+}
+.log-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 45rpx 40rpx; border-bottom: 1rpx solid #F8FAFC;
+}
+.name { font-size: 32rpx; font-weight: 600; color: #1E293B; display: block; margin-bottom: 10rpx; }
+.time { font-size: 22rpx; color: #94A3B8; }
+.minus { font-size: 36rpx; font-weight: 800; color: #F43F5E; text-align: right; display: block; }
+.status { font-size: 18rpx; color: #CBD5E1; }

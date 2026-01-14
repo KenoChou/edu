@@ -18,7 +18,10 @@
     "pages/child/index",
     "pages/order/index",
     "pages/verify/index",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/teacherSchedule/index",
+    "pages/studentList/index",
+    "pages/remainingLessons/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
