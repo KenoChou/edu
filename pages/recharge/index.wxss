@@ -1,0 +1,103 @@
+page { background: #FFFFFF; font-family: sans-serif; }
+
+/* 导航栏样式 */
+.nav-header {
+  padding: 100rpx 40rpx 30rpx;
+  display: flex;
+  align-items: center;
+}
+.back-icon { font-size: 40rpx; color: #334155; margin-right: 30rpx; }
+.nav-title { font-size: 36rpx; font-weight: 700; color: #1E293B; }
+
+.content-box { padding: 40rpx; }
+
+.section-label {
+  font-size: 28rpx;
+  color: #64748B;
+  font-weight: 600;
+  margin-bottom: 30rpx;
+  margin-top: 20rpx;
+}
+
+/* 金额矩阵：3列排布 */
+.amount-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24rpx;
+  margin-bottom: 60rpx;
+}
+
+.amount-card {
+  height: 160rpx;
+  border: 2rpx solid #F1F5F9;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  transition: all 0.2s;
+  position: relative;
+}
+
+/* 选中态样式：参考图61的浅紫色背景和紫色边框 */
+.amount-card.active {
+  background: #F5F3FF;
+  border-color: #8B5CF6;
+}
+
+.amount-card .val {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 8rpx;
+}
+.amount-card.active .val { color: #7C3AED; }
+
+.amount-card .sub {
+  font-size: 20rpx;
+  color: #94A3B8;
+}
+.amount-card.active .sub { color: #A78BFA; }
+
+/* 支付选择器 */
+.pay-selector {
+  background: #F8FAFC;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-top: 20rpx;
+}
+.pay-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pay-info { display: flex; align-items: center; font-size: 28rpx; color: #1E293B; font-weight: 600; }
+.wechat-icon {
+  width: 48rpx; height: 48rpx;
+  border: 2rpx solid #10B981; border-radius: 50%; /* 模拟图中的绿色图标 */
+  margin-right: 20rpx;
+}
+
+/* 选中的紫色圆圈对勾 */
+.check-circle.active {
+  width: 40rpx; height: 40rpx;
+  background: #7C3AED;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.check-icon { color: white; font-size: 20rpx; transform: rotate(-45deg) translate(2rpx, -2rpx); border-left: 4rpx solid; border-bottom: 4rpx solid; width: 12rpx; height: 8rpx; display: inline-block; }
+
+/* 底部大按钮 */
+.footer-action {
+  position: fixed; bottom: 80rpx; width: 100%; padding: 0 40rpx; box-sizing: border-box;
+}
+.confirm-btn {
+  background: #6366F1; /* 饱和度较高的紫色 */
+  color: #FFFFFF;
+  height: 100rpx; line-height: 100rpx;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  box-shadow: 0 12rpx 24rpx rgba(99, 102, 241, 0.3);
+}

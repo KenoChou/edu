@@ -5,6 +5,7 @@ Page({
     navHeight: 0,
     // 家长版专属菜单
     parentMenus: [
+      { name: '我的钱包', icon: '💰', color: 'blue' },
       { name: '我的孩子', icon: '👶', color: 'orange' },
       { name: '课时记录', icon: '📅', color: 'blue' },
       { name: '订单管理', icon: '📑', color: 'green' }

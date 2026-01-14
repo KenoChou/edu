@@ -21,7 +21,8 @@
     "pages/login/index",
     "pages/teacherSchedule/index",
     "pages/studentList/index",
-    "pages/remainingLessons/index"
+    "pages/remainingLessons/index",
+    "pages/recharge/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,0 +1,42 @@
+<view class="recharge-container">
+  <view class="nav-header">
+    <text class="back-icon" bindtap="goBack">←</text>
+    <text class="nav-title">充值中心</text>
+  </view>
+
+  <view class="content-box">
+    <view class="section-label">充值金额</view>
+    
+    <view class="amount-matrix">
+      <view 
+        class="amount-card {{activeId === item.id ? 'active' : ''}}" 
+        wx:for="{{rechargeList}}" 
+        wx:key="id"
+        bindtap="selectAmount"
+        data-id="{{item.id}}"
+      >
+        <view class="val">¥{{item.value}}</view>
+        <view class="sub">售价 {{item.price}}元</view>
+        <view class="active-badge" wx:if="{{activeId === item.id}}"></view>
+      </view>
+    </view>
+
+    <view class="section-label">支付方式</view>
+    
+    <view class="pay-selector">
+      <view class="pay-row">
+        <view class="pay-info">
+          <image class="wechat-icon" src="/images/wechat-pay.png"></image>
+          <text>微信支付</text>
+        </view>
+        <view class="check-circle active">
+          <text class="check-icon">L</text> 
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-action">
+    <button class="confirm-btn">确认支付</button>
+  </view>
+</view>

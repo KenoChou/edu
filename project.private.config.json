@@ -23,11 +23,32 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/record/index",
-          "pathName": "pages/record/index",
+          "name": "pages/recharge/index",
+          "pathName": "pages/recharge/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/echarge/index",
+          "pathName": "pages/echarge/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/account/index",
+          "pathName": "pages/account/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/record/index",
+          "pathName": "pages/record/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/remainingLessons/index",
