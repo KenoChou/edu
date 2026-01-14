@@ -22,11 +22,19 @@
   </view>
 
   <view class="menu-grid">
-    <view class="menu-item" wx:for="{{menus}}" wx:key="index">
-      <view class="m-i">{{item.icon}}</view>
-      <view class="m-t">{{item.text}}</view>
-    </view>
+  <view class="menu-item" 
+        wx:for="{{menus}}" 
+        wx:for-item="item" 
+        wx:key="index"
+        bindtap="handleClick"
+        data-item="{{item}}"       
+        data-index="{{index}}">
+    <view class="m-i">{{item.icon}}</view>
+    <view class="m-t">{{item.text}}</view>
   </view>
+</view>
+
+
 
   <view class="hot">
     <view class="hot-h">
