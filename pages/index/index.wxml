@@ -2,7 +2,7 @@
   <view class="custom-nav" style="padding-top:{{statusBarHeight}}px; padding-right:{{menuWidth}}px">
     <view class="nav-content" style="height:{{navBarHeight}}px">
       <view class="loc">北京朝阳校区 <text class="arrow">▼</text></view>
-      <view class="msg">🔔<view class="dot"></view></view>
+      <view class="msg" bindtap="goToNotice">🔔<view class="dot"></view></view>
     </view>
   </view>
 
@@ -39,7 +39,7 @@
   <view class="hot">
     <view class="hot-h">
       <view class="h-l"><view class="line"></view>热门推荐</view>
-      <view class="h-r">更多 ></view>
+      <view class="h-r" bindtap="goToAllCategory">更多 ></view>
     </view>
 
     <view class="c-card">
@@ -53,7 +53,7 @@
         <view class="c-desc">菲伯尔教学法，趣味识谱。</view>
         <view class="c-f">
           <view class="c-p">¥<text>200</text>/课时</view>
-          <view class="c-btn">预订</view>
+          <view class="c-btn" bindtap="goToCourseDetail">预订</view>
         </view>
       </view>
     </view>
