@@ -21,10 +21,10 @@
       </view>
       <view class="user-text">
         <view class="name-line">
-          <text class="user-name">李子轩</text>
-          <text class="status-tag">{{role == 1 ? '教师工作台' : '未认证'}}</text>
+          <text class="user-name">{{userName}}</text>
+          <text class="status-tag">{{role == 1 ? '教师工作台' : authStatusText}}</text>
         </view>
-        <text class="user-id">ID: 882930 · 北京</text>
+        <text class="user-id">ID: {{userId}} · {{city}}</text>
       </view>
     </view>
 
@@ -48,14 +48,14 @@
     
     <view class="card grid-card {{role == 1 ? 'is-teacher' : 'is-parent'}}">
       <block wx:for="{{role == 1 ? teacherMenus : parentMenus}}" wx:key="name">
-        <view class="grid-item">
+        <view class="grid-item" bindtap="onMenuTap" data-name="{{item.name}}">
           <view class="icon-wrap bg-{{item.color}}">{{item.icon}}</view>
           <text class="item-name">{{item.name}}</text>
         </view>
       </block>
     </view>
 
-    <view class="card banner-card">
+    <view class="card banner-card" bindtap="onBannerTap">
       <view class="b-left">
         <view class="b-icon">🎓</view>
         <view class="b-info">
@@ -69,18 +69,18 @@
     </view>
 
     <view class="card list-card">
-      <view class="list-item" wx:for="{{['实名认证','账号与安全','联系客服','关于']}}" wx:key="*this">
+      <view class="list-item" wx:for="{{settingList}}" wx:key="*this" bindtap="onSettingTap" data-name="{{item}}">
         <view class="li-left">
           <text class="li-icon">🛡️</text>
           <text>{{item}}</text>
         </view>
         <view class="li-right">
-          <text wx:if="{{index == 0}}" class="v-tag">已认证</text>
+          <text wx:if="{{index == 0}}" class="v-tag">{{authStatusText}}</text>
           <text class="arrow">></text>
         </view>
       </view>
     </view>
 
-    <button class="logout-btn" wx:if="{{role == 1}}">退出当前账号</button>
+    <button class="logout-btn" wx:if="{{role == 1}}" bindtap="onLogout">退出当前账号</button>
   </view>
 </view>
