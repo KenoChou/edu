@@ -40,13 +40,13 @@
       <view class="sec-header">
         <view class="indicator"></view>
         <text>授课老师</text>
-        <view class="change-btn" bindtap="onChangeTeacher">更换 ></view>
+        <view class="change-btn" bindtap="onChangeTeacher">查看/更换 ></view>
       </view>
-      <view class="ai-box">
+      <view class="ai-box" bindtap="onChangeTeacher">
         <view class="ai-avatar">🤖</view>
         <view class="ai-info">
-          <view class="ai-name">系统智能推荐</view>
-          <view class="ai-tips">根据您的需求匹配最合适的老师</view>
+          <view class="ai-name">{{selectedTeacherName}}</view>
+          <view class="ai-tips">{{selectedTeacherTips}}</view>
         </view>
         <view class="ai-arrow"></view>
       </view>
