@@ -3,6 +3,14 @@ Page({
     statusBarHeight: 20,
     navBarHeight: 44,
     menuWidth: 80,
+    showCampusSheet: false,
+    currentCampus: '北京朝阳校区',
+    campusList: [
+      { id: 'bj-cy', name: '北京朝阳校区', address: '朝阳区望京街道 88 号' },
+      { id: 'bj-hd', name: '北京海淀校区', address: '海淀区中关村南大街 27 号' },
+      { id: 'sh-pd', name: '上海浦东校区', address: '浦东新区张杨路 500 号' },
+      { id: 'gz-th', name: '广州天河校区', address: '天河区体育西路 102 号' }
+    ],
     menus: [
       { id: 1, icon: '🏀', text: '体育' },
       { id: 2, icon: '🎹', text: '音乐' },
@@ -20,6 +28,22 @@ Page({
     const item = e.currentTarget.dataset.item;
     wx.navigateTo({
       url: `/pages/category/index?id=${item.id}&text=${item.text}`
+    });
+  },
+
+  openCampusSheet() {
+    this.setData({ showCampusSheet: true });
+  },
+
+  closeCampusSheet() {
+    this.setData({ showCampusSheet: false });
+  },
+
+  selectCampus(e) {
+    const { name } = e.currentTarget.dataset;
+    this.setData({
+      currentCampus: name,
+      showCampusSheet: false
     });
   },
 
