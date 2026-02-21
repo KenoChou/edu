@@ -26,7 +26,8 @@ const MENU_ROUTE_MAP = {
     请假审批: '/pages/apply/index',
     资质管理: '/pages/certs/index',
     消息通知: '/pages/notice/index',
-    评价中心: '/pages/eval/index'
+    评价中心: '/pages/eval/index',
+    更多: '/pages/notice/index'
   },
   通用: {
     实名认证: '/pages/verify/index',
@@ -106,6 +107,13 @@ Page({
       wx.showToast({ title: '功能开发中', icon: 'none' });
       return;
     }
+
+    const tabPages = ['/pages/index/index', '/pages/calendar/index', '/pages/me/index'];
+    if (tabPages.includes(path)) {
+      wx.switchTab({ url: path });
+      return;
+    }
+
     wx.navigateTo({ url: path });
   },
   onMenuTap(e) {
