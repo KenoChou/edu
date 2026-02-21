@@ -23,7 +23,8 @@ Page({
     selectedTeacherTips: '根据您的需求匹配最合适的老师',
     packageList: buildDefaultPackages(),
     remark: '',
-    agreed: true
+    agreed: true,
+    isFavorite: false
   },
   onLoad(options = {}) {
     const sys = wx.getSystemInfoSync();
@@ -35,6 +36,7 @@ Page({
     });
 
     this.fetchCourseDetail();
+    this.syncFavoriteState(options.id || 'default');
   },
   async fetchCourseDetail() {
     if (!this.data.courseId) return;
@@ -57,6 +59,30 @@ Page({
     } finally {
       this.setData({ loading: false });
     }
+  },
+
+  syncFavoriteState(courseId) {
+    const favoriteIds = wx.getStorageSync('favoriteCourseIds') || [];
+    const key = String(courseId || 'default');
+    this.setData({
+      courseId: key,
+      isFavorite: favoriteIds.includes(key)
+    });
+  },
+  toggleFavorite() {
+    const key = String(this.data.courseId || 'default');
+    const favoriteIds = wx.getStorageSync('favoriteCourseIds') || [];
+    const hasFavorite = favoriteIds.includes(key);
+    const nextList = hasFavorite
+      ? favoriteIds.filter((id) => id !== key)
+      : [...favoriteIds, key];
+
+    wx.setStorageSync('favoriteCourseIds', nextList);
+    this.setData({ isFavorite: !hasFavorite });
+    wx.showToast({
+      title: hasFavorite ? '已取消收藏' : '已收藏课程',
+      icon: 'none'
+    });
   },
   goBack() {
     wx.navigateBack();

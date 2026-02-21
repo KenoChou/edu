@@ -74,6 +74,8 @@ page { background: #f8f9fb; font-family: -apple-system, BlinkMacSystemFont, "Hel
 .icon-unit { display: flex; flex-direction: column; align-items: center; margin-right: 48rpx; }
 .icon-img { font-size: 40rpx; line-height: 1; }
 .icon-unit text { font-size: 22rpx; color: #666; margin-top: 8rpx; }
+.icon-unit.active .icon-img { color: #f59e0b; }
+.icon-unit.active text { color: #f59e0b; }
 .order-submit-btn {
   flex: 1; background: #5e5ce6; color: #fff; height: 92rpx;
   border-radius: 46rpx; font-weight: bold; font-size: 32rpx;

@@ -98,9 +98,9 @@
         <view class="icon-img">💬</view>
         <text>咨询</text>
       </view>
-      <view class="icon-unit">
-        <view class="icon-img">⭐</view>
-        <text>收藏</text>
+      <view class="icon-unit {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+        <view class="icon-img">{{isFavorite ? '⭐' : '☆'}}</view>
+        <text>{{isFavorite ? '已收藏' : '收藏'}}</text>
       </view>
     </view>
     <button class="order-submit-btn" loading="{{submitting}}" bindtap="handleSubmitOrder">立即预订</button>
