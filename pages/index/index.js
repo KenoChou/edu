@@ -2,7 +2,15 @@ Page({
   data: {
     statusBarHeight: 20,
     navBarHeight: 44,
-    menuWidth: 80, // 胶囊宽度
+    menuWidth: 80,
+    showCampusSheet: false,
+    currentCampus: '北京朝阳校区',
+    campusList: [
+      { id: 'bj-cy', name: '北京朝阳校区', address: '朝阳区望京街道 88 号' },
+      { id: 'bj-hd', name: '北京海淀校区', address: '海淀区中关村南大街 27 号' },
+      { id: 'sh-pd', name: '上海浦东校区', address: '浦东新区张杨路 500 号' },
+      { id: 'gz-th', name: '广州天河校区', address: '天河区体育西路 102 号' }
+    ],
     menus: [
       { id: 1, icon: '🏀', text: '体育' },
       { id: 2, icon: '🎹', text: '音乐' },
@@ -16,13 +24,39 @@ Page({
     ]
   },
 
-  // 点击菜单
   handleClick(e) {
-    const item = e.currentTarget.dataset.item; // 当前菜单对象
+    const item = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: `/pages/category/index?id=${item.id}&text=${item.text}` // 传 id 和 text
+      url: `/pages/category/index?id=${item.id}&text=${item.text}`
     });
-    console.log('点击了菜单:', item);
+  },
+
+  openCampusSheet() {
+    this.setData({ showCampusSheet: true });
+  },
+
+  closeCampusSheet() {
+    this.setData({ showCampusSheet: false });
+  },
+
+  selectCampus(e) {
+    const { name } = e.currentTarget.dataset;
+    this.setData({
+      currentCampus: name,
+      showCampusSheet: false
+    });
+  },
+
+  goToNotice() {
+    wx.navigateTo({ url: '/pages/notice/index' });
+  },
+
+  goToAllCategory() {
+    wx.navigateTo({ url: '/pages/category/index?id=9&text=全部' });
+  },
+
+  goToCourseDetail() {
+    wx.navigateTo({ url: '/pages/detail/index?id=1001' });
   },
 
   onLoad() {
@@ -31,15 +65,7 @@ Page({
     this.setData({
       statusBarHeight: sys.statusBarHeight,
       navBarHeight: (menu.top - sys.statusBarHeight) * 2 + menu.height,
-      menuWidth: sys.screenWidth - menu.left + 10 // 预留出胶囊宽度加间距
+      menuWidth: sys.screenWidth - menu.left + 10
     });
-  },
-
-  // 暂时不用
-  onCategoryTap(e) {
-    // const { id, name } = e.currentTarget.dataset;
-    // wx.navigateTo({
-    //   url: `/pages/index/index?categoryId=${id}&categoryName=${name}`
-    // });
   }
 });

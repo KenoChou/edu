@@ -14,17 +14,15 @@
   <view class="main-body">
     <view class="card price-card">
       <view class="card-title-row">
-        <text class="course-name">少儿钢琴启蒙</text>
+        <text class="course-name">{{courseName}}</text>
         <view class="price-info">
           <text class="yen">¥</text>
-          <text class="num">200</text>
+          <text class="num">{{coursePrice}}</text>
           <text class="unit">/课时</text>
         </view>
       </view>
       <view class="tag-row">
-        <text class="tag-purple">线下授课</text>
-        <text class="tag-purple">含教材</text>
-        <text class="tag-purple">随时退</text>
+        <text class="tag-purple" wx:for="{{courseTags}}" wx:key="*this">{{item}}</text>
       </view>
     </view>
 
@@ -33,23 +31,64 @@
         <view class="indicator"></view>
         <text>课程介绍</text>
       </view>
-      <view class="sec-content">菲伯尔教学法，通过趣味识谱和律动练习，让孩子在快乐中开启音乐之旅。课程包含基础乐理与初步弹奏技巧。</view>
+      <view class="sec-content">{{courseDesc}}</view>
     </view>
 
     <view class="card teacher-card">
       <view class="sec-header">
         <view class="indicator"></view>
         <text>授课老师</text>
-        <view class="change-btn" bindtap="onChangeTeacher">更换 ></view>
+        <view class="change-btn" bindtap="onChangeTeacher">查看/更换 ></view>
       </view>
-      <view class="ai-box">
+      <view class="ai-box" bindtap="onChangeTeacher">
         <view class="ai-avatar">🤖</view>
         <view class="ai-info">
-          <view class="ai-name">系统智能推荐</view>
-          <view class="ai-tips">根据您的需求匹配最合适的老师</view>
+          <view class="ai-name">{{selectedTeacherName}}</view>
+          <view class="ai-tips">{{selectedTeacherTips}}</view>
         </view>
         <view class="ai-arrow"></view>
       </view>
+    </view>
+
+    <view class="card">
+      <view class="sec-header">
+        <view class="indicator"></view>
+        <text>订课套餐</text>
+      </view>
+      <view class="package-list">
+        <view
+          class="package-item {{item.active ? 'active' : ''}}"
+          wx:for="{{packageList}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="onSelectPackage"
+        >
+          <view>
+            <view class="package-title">{{item.title}}</view>
+            <view class="package-lessons">{{item.lessons}} 课时</view>
+          </view>
+          <view class="package-price">¥{{item.totalPrice}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="sec-header">
+        <view class="indicator"></view>
+        <text>备注信息</text>
+      </view>
+      <textarea
+        class="remark-input"
+        placeholder="请输入上课偏好、时间需求等（选填）"
+        maxlength="120"
+        value="{{remark}}"
+        bindinput="onRemarkInput"
+      ></textarea>
+    </view>
+
+    <view class="agree-row" bindtap="toggleAgree">
+      <view class="agree-check {{agreed ? 'active' : ''}}"></view>
+      <text>我已阅读并同意《课程服务协议》</text>
     </view>
   </view>
 
@@ -59,11 +98,11 @@
         <view class="icon-img">💬</view>
         <text>咨询</text>
       </view>
-      <view class="icon-unit">
-        <view class="icon-img">⭐</view>
-        <text>收藏</text>
+      <view class="icon-unit {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+        <view class="icon-img">{{isFavorite ? '⭐' : '☆'}}</view>
+        <text>{{isFavorite ? '已收藏' : '收藏'}}</text>
       </view>
     </view>
-    <button class="order-submit-btn">立即预订</button>
+    <button class="order-submit-btn" loading="{{submitting}}" bindtap="handleSubmitOrder">立即预订</button>
   </view>
 </view>

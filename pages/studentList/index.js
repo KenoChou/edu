@@ -11,5 +11,9 @@ Page({
       navTop: menuBtn.top,
       navHeight: menuBtn.height
     })
+  },
+
+  goBack() {
+    wx.navigateBack();
   }
 })
