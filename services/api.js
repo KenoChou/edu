@@ -199,6 +199,13 @@ export const cancelOrder = (orderId) =>
     data: { orderId }
   });
 
+export const createCourseOrder = (data) =>
+  request({
+    url: '/order/create',
+    method: 'POST',
+    data
+  });
+
 /* ===================== 教师业务 ===================== */
 export const getTeacherStats = () =>
   request({ url: '/teacher/dashboard-stats' });

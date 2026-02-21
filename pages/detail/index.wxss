@@ -80,3 +80,49 @@ page { background: #f8f9fb; font-family: -apple-system, BlinkMacSystemFont, "Hel
   display: flex; align-items: center; justify-content: center;
   border: none; margin: 0;
 }
+.package-list { display: flex; flex-direction: column; gap: 16rpx; }
+.package-item {
+  border: 2rpx solid #ecebff;
+  border-radius: 18rpx;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.package-item.active {
+  border-color: #5e5ce6;
+  background: #f5f4ff;
+}
+.package-title { font-size: 28rpx; color: #1f2937; font-weight: 600; }
+.package-lessons { font-size: 22rpx; color: #6b7280; margin-top: 8rpx; }
+.package-price { font-size: 32rpx; color: #5e5ce6; font-weight: 700; }
+
+.remark-input {
+  width: 100%;
+  min-height: 120rpx;
+  background: #f8fafc;
+  border-radius: 14rpx;
+  padding: 18rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+}
+
+.agree-row {
+  margin: -4rpx 30rpx 210rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #6b7280;
+}
+.agree-check {
+  width: 30rpx;
+  height: 30rpx;
+  border: 2rpx solid #c7c9d1;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.agree-check.active {
+  border-color: #5e5ce6;
+  background: #5e5ce6;
+  box-shadow: inset 0 0 0 7rpx #fff;
+}
