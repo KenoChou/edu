@@ -146,6 +146,33 @@ Page({
       wx.switchTab({ url: '/pages/index/index' });
       console.warn('loginWithPhoneCode failed:', error);
     }
+
+    this.setData({ loginStatus: LOGIN_STATUS.LOGGING_IN });
+    wx.showLoading({ title: '登录中...' });
+
+    setTimeout(() => {
+      wx.hideLoading();
+      const mockToken = `mock_${Date.now()}`;
+      const store = app.getStore();
+
+      store.setState((state) => ({
+        session: {
+          ...state.session,
+          token: mockToken,
+          roleType: ROLE_TYPES.PARENT,
+          loginStatus: LOGIN_STATUS.LOGGED_IN
+        },
+        userProfile: {
+          ...state.userProfile,
+          name: '李子轩',
+          userId: '882930',
+          city: '北京'
+        }
+      }));
+
+      this.setData({ loginStatus: LOGIN_STATUS.LOGGED_IN });
+      wx.switchTab({ url: '/pages/index/index' });
+    }, 800);
   },
   goBack() {
     wx.navigateBack();
