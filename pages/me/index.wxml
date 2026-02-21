@@ -17,7 +17,7 @@
     </view>
 
     <view class="user-section">
-      <view class="avatar-group">
+      <view class="avatar-group" bindtap="onAvatarTap">
         <view class="avatar-main">{{isLoggedIn ? 'LI' : '游客'}}</view>
         <view class="avatar-badge">{{canShowTeacher ? '🎓' : '👶'}}</view>
       </view>
@@ -47,7 +47,6 @@
 
     <view class="guest-tip" wx:else>
       <text>登录后可查看钱包、订单、课表等内容</text>
-      <button class="guest-login-btn" bindtap="goLogin">去登录</button>
     </view>
   </view>
 

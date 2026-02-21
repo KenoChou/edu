@@ -73,4 +73,3 @@ page { background-color: #f7f8fa; }
 .bg-gray { background: #f9fafb; }
 
 .guest-tip { margin-top: 42rpx; color: #fff; font-size: 24rpx; }
-.guest-login-btn { margin-top: 16rpx; width: 220rpx; height: 64rpx; line-height: 64rpx; border-radius: 32rpx; background: rgba(255,255,255,0.95); color: #3a86ff; font-size: 26rpx; }

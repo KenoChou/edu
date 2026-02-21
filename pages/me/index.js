@@ -122,6 +122,11 @@ Page({
   goLogin() {
     wx.navigateTo({ url: '/pages/login/index' });
   },
+  onAvatarTap() {
+    if (!this.data.isLoggedIn) {
+      this.goLogin();
+    }
+  },
   navigateTo(path) {
     if (!path) {
       wx.showToast({ title: '功能开发中', icon: 'none' });
