@@ -9,17 +9,24 @@
   </view>
 
   <scroll-view scroll-y class="list-container" style="margin-top: {{statusBarHeight + navHeight}}px">
-    
-    <view class="teacher-card active" bindtap="onSelect" data-id="ai">
+    <view
+      class="teacher-card {{selectedId === 'ai' ? 'active' : ''}}"
+      bindtap="onSelect"
+      data-id="ai"
+    >
       <view class="ai-box">🤖</view>
       <view class="info-content">
         <view class="main-name">系统智能推荐</view>
         <view class="sub-text">快速匹配 · 优选师资</view>
       </view>
-      <view class="check-circle active"></view>
+      <view class="check-circle {{selectedId === 'ai' ? 'active' : ''}}"></view>
     </view>
 
-    <view class="teacher-card" bindtap="onSelect" data-id="teacher1">
+    <view
+      class="teacher-card {{selectedId === 'teacher1' ? 'active' : ''}}"
+      bindtap="onSelect"
+      data-id="teacher1"
+    >
       <view class="avatar-zh">ZH</view>
       <view class="info-content">
         <view class="name-row">
@@ -33,9 +40,8 @@
       </view>
       <view class="right-action-area">
         <view class="cert-link-btn" catchtap="viewCert">查看资质</view>
-        <view class="check-circle"></view>
+        <view class="check-circle {{selectedId === 'teacher1' ? 'active' : ''}}"></view>
       </view>
     </view>
-
   </scroll-view>
 </view>

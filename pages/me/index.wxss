@@ -71,3 +71,5 @@ page { background-color: #f7f8fa; }
 .bg-cyan { background: #ecfeff; }
 .bg-purple { background: #faf5ff; }
 .bg-gray { background: #f9fafb; }
+
+.guest-tip { margin-top: 42rpx; color: #fff; font-size: 24rpx; }
