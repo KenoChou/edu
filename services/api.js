@@ -1,9 +1,26 @@
 // services/api.js
 import { request } from '../utils/request.js';
+import { ORDER_STATUS } from '../utils/state.js';
 
 /* ===================== 用户与登录 ===================== */
 export const login = (code) =>
-  request({ url: '/auth/login', method: 'POST', data: { code } });
+  request({ url: '/auth/login', method: 'POST', data: { code }, noAuth: true });
+
+export const sendLoginCode = (phone) =>
+  request({
+    url: '/auth/sms/send',
+    method: 'POST',
+    data: { phone },
+    noAuth: true
+  });
+
+export const loginWithPhoneCode = (phone, verifyCode) =>
+  request({
+    url: '/auth/sms/login',
+    method: 'POST',
+    data: { phone, code: verifyCode },
+    noAuth: true
+  });
 
 export const getUserProfile = () =>
   request({ url: '/user/profile' });
@@ -125,7 +142,7 @@ export const getLessonReport = () =>
 export const getCourseCategories = () =>
   request({ url: '/course/categories' });
 
-export const getCourseList = (params) =>
+export const getCourseList = (params = {}) =>
   request({
     url: '/course/list',
     data: {
@@ -147,11 +164,27 @@ export const getHotCourses = (limit = 4) =>
   });
 
 /* ===================== 订单 ===================== */
-export const getMyOrders = (status = 'all') =>
-  request({
+export const ORDER_STATUS_TO_API = {
+  [ORDER_STATUS.ALL]: 'all',
+  [ORDER_STATUS.PENDING_PAY]: 'pending',
+  [ORDER_STATUS.COMPLETED]: 'completed',
+  [ORDER_STATUS.REFUNDED]: 'refund'
+};
+
+export const getMyOrders = (params = {}) => {
+  const status =
+    typeof params === 'string'
+      ? params
+      : (ORDER_STATUS_TO_API[params.status] || 'all');
+
+  const page = typeof params === 'object' ? (params.page || 1) : 1;
+  const pageSize = typeof params === 'object' ? (params.pageSize || 20) : 20;
+
+  return request({
     url: '/order/my-list',
-    data: { status }
+    data: { status, page, pageSize }
   });
+};
 
 export const getOrderDetail = (orderId) =>
   request({ url: `/order/detail/${orderId}` });
