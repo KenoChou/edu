@@ -24,6 +24,7 @@
 .left { width: 140rpx; padding-left: 20rpx; border-left: 6rpx solid #eee; display: flex; flex-direction: column; }
 .border-blue { border-left-color: #3a86ff; }
 .border-orange { border-left-color: #ff9f43; }
+.border-gray { border-left-color: #c4c7ce; }
 
 .t { font-size: 36rpx; font-weight: bold; color: #333; margin-top: -6rpx; }
 .s { font-size: 22rpx; color: #999; margin-top: 6rpx; }
@@ -41,3 +42,7 @@
 
 .bg-blue { background: #3a86ff; }
 .bg-orange { background: #ff9f43; }
+.bg-gray { background: #c4c7ce; }
+
+.loading { font-size: 24rpx; color: #999; text-align: center; padding: 40rpx 0; }
+.empty { font-size: 24rpx; color: #bbb; text-align: center; padding: 40rpx 0; }
