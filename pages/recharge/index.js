@@ -15,6 +15,10 @@ Page({
     isProcessing: false // 防止重复点击的状态位
   },
 
+  goBack() {
+    wx.navigateBack();
+  },
+
   // 选中金额
   selectAmount(e) {
     this.setData({ activeId: e.currentTarget.dataset.id });

@@ -1,13 +1,9 @@
-<view class="page-container {{role == 1 ? 'theme-teacher' : 'theme-parent'}}">
-  
+<view class="page-container {{canShowTeacher ? 'theme-teacher' : 'theme-parent'}}">
   <view class="header-bg">
     <view style="height: {{navTop}}px;"></view>
-    
+
     <view class="nav-bar" style="height: {{navHeight}}px;">
-      <view class="role-selector">
-        <view class="role-item {{role == 0 ? 'active' : ''}}" bindtap="switchRole" data-role="0">家长版</view>
-        <view class="role-item {{role == 1 ? 'active' : ''}}" bindtap="switchRole" data-role="1">教师版</view>
-      </view>
+      <view class="nav-title">我的</view>
       <view class="header-icons">
         <text class="h-icon">🔔</text>
         <text class="h-icon">⚙️</text>
@@ -15,72 +11,75 @@
     </view>
 
     <view class="user-section">
-      <view class="avatar-group">
-        <view class="avatar-main">LI</view>
-        <view class="avatar-badge">{{role == 1 ? '🎓' : '👶'}}</view>
+      <view class="avatar-group" bindtap="onAvatarTap">
+        <view class="avatar-main">{{isLoggedIn ? 'LI' : '游客'}}</view>
+        <view class="avatar-badge">{{canShowTeacher ? '🎓' : '👶'}}</view>
       </view>
       <view class="user-text">
         <view class="name-line">
-          <text class="user-name">李子轩</text>
-          <text class="status-tag">{{role == 1 ? '教师工作台' : '未认证'}}</text>
+          <text class="user-name">{{userName}}</text>
+          <text class="status-tag">{{canShowTeacher ? '教师工作台' : authStatusText}}</text>
         </view>
-        <text class="user-id">ID: 882930 · 北京</text>
+        <text class="user-id">ID: {{userId}} · {{city}}</text>
       </view>
     </view>
 
-    <view class="stats-bar">
+    <view class="stats-bar" wx:if="{{isLoggedIn}}">
       <view class="stat-box">
-        <text class="s-val">{{role == 1 ? '42' : '12'}}</text>
-        <text class="s-lab">{{role == 1 ? '本月课时' : '剩余课时'}}</text>
+        <text class="s-val">{{canShowTeacher ? '42' : '12'}}</text>
+        <text class="s-lab">{{canShowTeacher ? '本月课时' : '剩余课时'}}</text>
       </view>
       <view class="stat-box">
-        <text class="s-val">{{role == 1 ? '18' : '2'}}</text>
-        <text class="s-lab">{{role == 1 ? '累计学员' : '优惠券'}}</text>
+        <text class="s-val">{{canShowTeacher ? '18' : '2'}}</text>
+        <text class="s-lab">{{canShowTeacher ? '累计学员' : '优惠券'}}</text>
       </view>
       <view class="stat-box">
-        <text class="s-val">{{role == 1 ? '5.0' : '150'}}</text>
-        <text class="s-lab">{{role == 1 ? '评分' : '积分'}}</text>
+        <text class="s-val">{{canShowTeacher ? '5.0' : '150'}}</text>
+        <text class="s-lab">{{canShowTeacher ? '评分' : '积分'}}</text>
       </view>
+    </view>
+
+    <view class="guest-tip" wx:else>
+      <text>登录后可查看钱包、订单、课表等内容</text>
     </view>
   </view>
 
   <view class="main-content">
-    
-    <view class="card grid-card {{role == 1 ? 'is-teacher' : 'is-parent'}}">
-      <block wx:for="{{role == 1 ? teacherMenus : parentMenus}}" wx:key="name">
-        <view class="grid-item">
+    <view class="card grid-card {{canShowTeacher ? 'is-teacher' : 'is-parent'}}">
+      <block wx:for="{{canShowTeacher ? teacherMenus : parentMenus}}" wx:key="name">
+        <view class="grid-item" bindtap="onMenuTap" data-name="{{item.name}}">
           <view class="icon-wrap bg-{{item.color}}">{{item.icon}}</view>
           <text class="item-name">{{item.name}}</text>
         </view>
       </block>
     </view>
 
-    <view class="card banner-card">
+    <view class="card banner-card" bindtap="onBannerTap">
       <view class="b-left">
         <view class="b-icon">🎓</view>
         <view class="b-info">
-          <view class="b-title">{{role == 1 ? '我的教师资质' : '成为授课老师'}}</view>
+          <view class="b-title">{{canShowTeacher ? '我的教师资质' : '成为授课老师'}}</view>
           <view class="b-desc">查看已认证的证书与等级</view>
         </view>
       </view>
-      <view class="b-btn {{role == 1 ? 'btn-blue' : 'btn-primary'}}">
-        {{role == 1 ? '查看证书' : '立即申请'}}
+      <view class="b-btn {{canShowTeacher ? 'btn-blue' : 'btn-primary'}}">
+        {{canShowTeacher ? '查看证书' : '立即申请'}}
       </view>
     </view>
 
     <view class="card list-card">
-      <view class="list-item" wx:for="{{['实名认证','账号与安全','联系客服','关于']}}" wx:key="*this">
+      <view class="list-item" wx:for="{{settingList}}" wx:key="*this" bindtap="onSettingTap" data-name="{{item}}">
         <view class="li-left">
           <text class="li-icon">🛡️</text>
           <text>{{item}}</text>
         </view>
         <view class="li-right">
-          <text wx:if="{{index == 0}}" class="v-tag">已认证</text>
+          <text wx:if="{{index == 0}}" class="v-tag">{{authStatusText}}</text>
           <text class="arrow">></text>
         </view>
       </view>
     </view>
 
-    <button class="logout-btn" wx:if="{{role == 1}}">退出当前账号</button>
+    <button class="logout-btn" wx:if="{{isLoggedIn}}" bindtap="onLogout">退出当前账号</button>
   </view>
 </view>

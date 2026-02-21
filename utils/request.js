@@ -1,10 +1,11 @@
 // utils/request.js
 import config from '../config.js';
+import { STORAGE_KEYS } from './state.js';
+import store from './store.js';
 
 let loadingCount = 0;
 let isRedirectingToLogin = false;
 
-/* ===================== Loading 管理 ===================== */
 function showLoading() {
   if (loadingCount === 0) {
     wx.showLoading({ title: '加载中', mask: true });
@@ -20,7 +21,6 @@ function hideLoading() {
   }
 }
 
-/* ===================== 主请求方法 ===================== */
 export const request = (options = {}) => {
   const {
     url,
@@ -31,13 +31,13 @@ export const request = (options = {}) => {
     noAuth = false
   } = options;
 
-  const token = wx.getStorageSync('token');
-  const roleType = wx.getStorageSync('roleType'); // ⭐ 关键
+  const state = store.getState();
+  const token = state.session?.token || wx.getStorageSync(STORAGE_KEYS.TOKEN);
+  const roleType = state.session?.roleType;
 
   return new Promise((resolve, reject) => {
     if (!noLoading) showLoading();
 
-    // 需要登录但没有 token
     if (!token && !noAuth) {
       redirectToLogin();
       !noLoading && hideLoading();
@@ -50,30 +50,17 @@ export const request = (options = {}) => {
       data,
       header: {
         'Content-Type': 'application/json',
-
-        // ⭐ 自动携带 token
-        ...(token && !noAuth
-          ? { Authorization: `Bearer ${token}` }
-          : {}),
-
-        // ⭐ 自动携带角色
-        ...(roleType !== undefined
-          ? { 'X-Role-Type': roleType }
-          : {}),
-
+        ...(token && !noAuth ? { Authorization: `Bearer ${token}` } : {}),
+        ...(roleType !== undefined ? { 'X-Role-Type': roleType } : {}),
         ...header
       },
-
       success(res) {
         const { statusCode, data: resData } = res;
 
-        // HTTP 成功
         if (statusCode === 200) {
           if (resData.code === 0) {
             resolve(resData.data);
-          }
-          // Token 失效（后端业务态）
-          else if (resData.code === 401) {
+          } else if (resData.code === 401) {
             handleUnauthorized();
             reject(resData);
           } else {
@@ -94,7 +81,6 @@ export const request = (options = {}) => {
           reject(res);
         }
       },
-
       fail(err) {
         wx.showToast({
           title: '网络异常，请检查网络',
@@ -102,7 +88,6 @@ export const request = (options = {}) => {
         });
         reject(err);
       },
-
       complete() {
         if (!noLoading) hideLoading();
       }
@@ -110,21 +95,18 @@ export const request = (options = {}) => {
   });
 };
 
-/* ===================== 401 统一处理 ===================== */
 function handleUnauthorized() {
-  wx.removeStorageSync('token');
-  wx.removeStorageSync('roleType');
+  store.clearSession();
   redirectToLogin();
 }
 
-/* ===================== 跳登录页（防抖） ===================== */
 function redirectToLogin() {
   if (isRedirectingToLogin) return;
 
   isRedirectingToLogin = true;
 
   wx.navigateTo({
-    url: '/pages/login/login',
+    url: '/pages/login/index',
     complete() {
       setTimeout(() => {
         isRedirectingToLogin = false;
