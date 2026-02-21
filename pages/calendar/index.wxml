@@ -1,32 +1,46 @@
 <view class="page">
   <view class="nav-fixed" style="padding-top: {{statusBarHeight}}px;">
     <view class="nav-content" style="height: {{navHeight}}px;">
-   
       <view class="nav-tabs">
-        <view class="tab active">按时间</view>
-        <view class="tab">按人员</view>
+        <view
+          class="tab {{viewMode === 'time' ? 'active' : ''}}"
+          data-mode="time"
+          bindtap="switchViewMode"
+        >按时间</view>
+        <view
+          class="tab {{viewMode === 'person' ? 'active' : ''}}"
+          data-mode="person"
+          bindtap="switchViewMode"
+        >按人员</view>
       </view>
-     
     </view>
   </view>
 
   <scroll-view class="date-bar" scroll-x enable-flex>
-    <view class="date-item {{item.active ? 'active' : ''}}" wx:for="{{days}}" wx:key="date">
+    <view
+      class="date-item {{item.active ? 'active' : ''}}"
+      wx:for="{{days}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="onSelectDay"
+    >
       <view class="w">{{item.week}}</view>
       <view class="d">{{item.date}}</view>
     </view>
   </scroll-view>
 
   <view class="list">
-    <view class="item" wx:for="{{courseList}}" wx:key="index">
+    <view class="loading" wx:if="{{loading}}">课表加载中...</view>
+
+    <view class="item" wx:for="{{courseList}}" wx:key="id" wx:if="{{!loading}}">
       <view class="left border-{{item.color}}">
         <view class="t">{{item.time}}</view>
-        <view class="s">进行中</view>
+        <view class="s">{{item.leftStatus}}</view>
       </view>
       <view class="right">
         <view class="card-h">
           <text class="ct">{{item.title}}</text>
-          <text class="bt">待上课</text>
+          <text class="bt">{{item.rightStatus}}</text>
         </view>
         <view class="card-b">
           <view class="user">
@@ -37,5 +51,7 @@
         </view>
       </view>
     </view>
+
+    <view class="empty" wx:if="{{!loading && courseList.length === 0}}">当前日期暂无课程安排</view>
   </view>
 </view>

@@ -1,6 +1,5 @@
 page { background: #f8f9fb; }
 
-/* 导航适配 */
 .custom-nav { background: #fff; position: sticky; top: 0; z-index: 100; }
 .nav-content { display: flex; align-items: center; padding-left: 30rpx; }
 .loc { font-size: 32rpx; font-weight: bold; max-width: 300rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -8,25 +7,21 @@ page { background: #f8f9fb; }
 .msg { margin-left: 30rpx; position: relative; font-size: 38rpx; }
 .dot { position: absolute; top: 0; right: 0; width: 10rpx; height: 10rpx; background: red; border-radius: 50%; border: 2rpx solid #fff; }
 
-/* 搜索 */
 .search-box { background: #fff; padding: 10rpx 30rpx 20rpx; }
 .s-in { background: #f2f3f5; height: 72rpx; border-radius: 36rpx; display: flex; align-items: center; padding: 0 30rpx; }
 .s-in input { flex: 1; font-size: 26rpx; margin-left: 15rpx; }
 
-/* Banner */
 .banner { padding: 20rpx 30rpx; }
 .b-card { height: 320rpx; background: #2a5298; border-radius: 24rpx; padding: 40rpx; color: #fff; position: relative; }
 .b-t { font-size: 40rpx; font-weight: bold; }
 .b-s { font-size: 24rpx; margin-top: 10rpx; opacity: 0.8; }
 .b-p { position: absolute; bottom: 30rpx; left: 50%; transform: translateX(-50%); width: 10rpx; height: 10rpx; background: #fff; border-radius: 50%; }
 
-/* 九宫格均匀分布 */
 .menu-grid { display: flex; flex-wrap: wrap; background: #fff; padding: 30rpx 10rpx; }
 .menu-item { width: 20%; display: flex; flex-direction: column; align-items: center; margin-bottom: 30rpx; }
 .m-i { font-size: 48rpx; margin-bottom: 10rpx; }
 .m-t { font-size: 24rpx; color: #333; }
 
-/* 课程卡片 */
 .hot { padding: 30rpx; }
 .hot-h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30rpx; }
 .h-l { font-size: 34rpx; font-weight: bold; display: flex; align-items: center; }
@@ -46,3 +41,73 @@ page { background: #f8f9fb; }
 .c-p { color: #3a9edd; font-size: 24rpx; font-weight: bold; }
 .c-p text { font-size: 40rpx; }
 .c-btn { background: #5ca8e7; color: #fff; font-size: 26rpx; padding: 12rpx 36rpx; border-radius: 30rpx; }
+
+.campus-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.campus-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -800rpx;
+  background: #fff;
+  border-top-left-radius: 28rpx;
+  border-top-right-radius: 28rpx;
+  padding: 24rpx 30rpx calc(24rpx + env(safe-area-inset-bottom));
+  z-index: 1001;
+  transition: bottom 0.25s ease;
+}
+
+.campus-sheet.show {
+  bottom: 0;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.sheet-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.sheet-close {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.campus-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 18rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.campus-name { font-size: 28rpx; color: #111827; }
+.campus-address { font-size: 22rpx; color: #6b7280; margin-top: 8rpx; }
+
+.campus-check {
+  width: 34rpx;
+  height: 34rpx;
+  border: 2rpx solid #d1d5db;
+  border-radius: 50%;
+}
+
+.campus-check.active {
+  border-color: #3b82f6;
+  background: #3b82f6;
+  box-shadow: inset 0 0 0 8rpx #fff;
+}

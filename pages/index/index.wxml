@@ -1,8 +1,8 @@
 <view class="page">
   <view class="custom-nav" style="padding-top:{{statusBarHeight}}px; padding-right:{{menuWidth}}px">
     <view class="nav-content" style="height:{{navBarHeight}}px">
-      <view class="loc">北京朝阳校区 <text class="arrow">▼</text></view>
-      <view class="msg">🔔<view class="dot"></view></view>
+      <view class="loc" bindtap="openCampusSheet">{{currentCampus}} <text class="arrow">▼</text></view>
+      <view class="msg" bindtap="goToNotice">🔔<view class="dot"></view></view>
     </view>
   </view>
 
@@ -22,24 +22,24 @@
   </view>
 
   <view class="menu-grid">
-  <view class="menu-item" 
-        wx:for="{{menus}}" 
-        wx:for-item="item" 
-        wx:key="index"
-        bindtap="handleClick"
-        data-item="{{item}}"       
-        data-index="{{index}}">
-    <view class="m-i">{{item.icon}}</view>
-    <view class="m-t">{{item.text}}</view>
+    <view
+      class="menu-item"
+      wx:for="{{menus}}"
+      wx:for-item="item"
+      wx:key="index"
+      bindtap="handleClick"
+      data-item="{{item}}"
+      data-index="{{index}}"
+    >
+      <view class="m-i">{{item.icon}}</view>
+      <view class="m-t">{{item.text}}</view>
+    </view>
   </view>
-</view>
-
-
 
   <view class="hot">
     <view class="hot-h">
       <view class="h-l"><view class="line"></view>热门推荐</view>
-      <view class="h-r">更多 ></view>
+      <view class="h-r" bindtap="goToAllCategory">更多 ></view>
     </view>
 
     <view class="c-card">
@@ -53,9 +53,25 @@
         <view class="c-desc">菲伯尔教学法，趣味识谱。</view>
         <view class="c-f">
           <view class="c-p">¥<text>200</text>/课时</view>
-          <view class="c-btn">预订</view>
+          <view class="c-btn" bindtap="goToCourseDetail">预订</view>
         </view>
       </view>
+    </view>
+  </view>
+
+  <view class="campus-mask" wx:if="{{showCampusSheet}}" bindtap="closeCampusSheet"></view>
+  <view class="campus-sheet {{showCampusSheet ? 'show' : ''}}">
+    <view class="sheet-header">
+      <text class="sheet-title">选择校区地址</text>
+      <text class="sheet-close" bindtap="closeCampusSheet">关闭</text>
+    </view>
+
+    <view class="campus-item" wx:for="{{campusList}}" wx:key="id" data-name="{{item.name}}" bindtap="selectCampus">
+      <view>
+        <view class="campus-name">{{item.name}}</view>
+        <view class="campus-address">{{item.address}}</view>
+      </view>
+      <view class="campus-check {{currentCampus === item.name ? 'active' : ''}}"></view>
     </view>
   </view>
 </view>
