@@ -73,6 +73,9 @@ export const createPayOrder = (configId) =>
     data: { configId }
   });
 
+// 兼容充值页历史调用命名
+export const createRechargeOrder = (configId) => createPayOrder(configId);
+
 export const queryPayStatus = (orderNo) =>
   request({
     url: '/pay/order/status',
