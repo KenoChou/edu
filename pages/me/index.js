@@ -42,9 +42,11 @@ Page({
     role: ROLE_TYPES.PARENT,
     navTop: 0,
     navHeight: 0,
-    userName: '李子轩',
-    userId: '882930',
-    city: '北京',
+    isLoggedIn: false,
+    canShowTeacher: false,
+    userName: '未登录用户',
+    userId: '--',
+    city: '--',
     authStatus: AUTH_STATUS.UNVERIFIED,
     authStatusText: AUTH_STATUS_LABEL[AUTH_STATUS.UNVERIFIED],
     parentMenus: [
@@ -86,21 +88,39 @@ Page({
   },
   syncFromStore(state) {
     const role = state?.session?.roleType ?? ROLE_TYPES.PARENT;
+    const token = state?.session?.token || '';
+    const isLoggedIn = !!token;
     const userProfile = state?.userProfile || {};
     const authStatus = userProfile.authStatus || AUTH_STATUS.UNVERIFIED;
+    const canShowTeacher = isLoggedIn && role === ROLE_TYPES.TEACHER && authStatus === AUTH_STATUS.VERIFIED;
 
     this.setData({
       role,
-      userName: userProfile.name || '李子轩',
-      userId: userProfile.userId || '882930',
-      city: userProfile.city || '北京',
+      isLoggedIn,
+      canShowTeacher,
+      userName: isLoggedIn ? (userProfile.name || '李子轩') : '未登录用户',
+      userId: isLoggedIn ? (userProfile.userId || '882930') : '--',
+      city: isLoggedIn ? (userProfile.city || '北京') : '--',
       authStatus,
       authStatusText: AUTH_STATUS_LABEL[authStatus] || AUTH_STATUS_LABEL[AUTH_STATUS.UNVERIFIED]
     });
   },
   switchRole(e) {
+    if (!this.data.isLoggedIn) {
+      this.goLogin();
+      return;
+    }
+
     const role = parseInt(e.currentTarget.dataset.role, 10);
+    if (role === ROLE_TYPES.TEACHER && this.data.authStatus !== AUTH_STATUS.VERIFIED) {
+      wx.showToast({ title: '请先完成教师认证', icon: 'none' });
+      return;
+    }
+
     app.getStore().setSession({ roleType: role });
+  },
+  goLogin() {
+    wx.navigateTo({ url: '/pages/login/index' });
   },
   navigateTo(path) {
     if (!path) {
@@ -117,8 +137,13 @@ Page({
     wx.navigateTo({ url: path });
   },
   onMenuTap(e) {
+    if (!this.data.isLoggedIn) {
+      this.goLogin();
+      return;
+    }
+
     const { name } = e.currentTarget.dataset;
-    const scene = this.data.role === ROLE_TYPES.TEACHER ? '教师版' : '家长版';
+    const scene = this.data.canShowTeacher ? '教师版' : '家长版';
     const path = MENU_ROUTE_MAP[scene][name];
     this.navigateTo(path);
   },
@@ -128,7 +153,12 @@ Page({
     this.navigateTo(path);
   },
   onBannerTap() {
-    const path = this.data.role === ROLE_TYPES.TEACHER
+    if (!this.data.isLoggedIn) {
+      this.goLogin();
+      return;
+    }
+
+    const path = this.data.canShowTeacher
       ? '/pages/certs/index'
       : '/pages/apply/index';
     this.navigateTo(path);
