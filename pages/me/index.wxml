@@ -51,7 +51,7 @@
     </view>
   </view>
 
-  <view class="main-content" wx:if="{{isLoggedIn}}">
+  <view class="main-content">
     <view class="card grid-card {{canShowTeacher ? 'is-teacher' : 'is-parent'}}">
       <block wx:for="{{canShowTeacher ? teacherMenus : parentMenus}}" wx:key="name">
         <view class="grid-item" bindtap="onMenuTap" data-name="{{item.name}}">
@@ -87,18 +87,6 @@
       </view>
     </view>
 
-    <button class="logout-btn" bindtap="onLogout">退出当前账号</button>
-  </view>
-
-  <view class="main-content" wx:else>
-    <view class="card list-card">
-      <view class="list-item" wx:for="{{['账号与安全','联系客服','关于']}}" wx:key="*this" bindtap="onSettingTap" data-name="{{item}}">
-        <view class="li-left">
-          <text class="li-icon">🛡️</text>
-          <text>{{item}}</text>
-        </view>
-        <view class="li-right"><text class="arrow">></text></view>
-      </view>
-    </view>
+    <button class="logout-btn" wx:if="{{isLoggedIn}}" bindtap="onLogout">退出当前账号</button>
   </view>
 </view>
