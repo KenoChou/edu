@@ -8,6 +8,7 @@ page { background-color: #f7f8fa; }
 
 /* 导航切换 */
 .nav-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 10rpx; }
+.nav-title { color: #fff; font-size: 34rpx; font-weight: 700; }
 .role-selector { display: flex; background: rgba(255,255,255,0.2); border-radius: 40rpx; padding: 4rpx; }
 .role-item { padding: 8rpx 30rpx; color: #fff; font-size: 24rpx; border-radius: 36rpx; }
 .role-item.active { background: #fff; color: #3a86ff; font-weight: bold; }

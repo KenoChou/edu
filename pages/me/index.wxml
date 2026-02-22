@@ -3,13 +3,7 @@
     <view style="height: {{navTop}}px;"></view>
 
     <view class="nav-bar" style="height: {{navHeight}}px;">
-      <view class="role-selector" wx:if="{{isLoggedIn}}">
-        <view class="role-item {{role == 0 ? 'active' : ''}}" bindtap="switchRole" data-role="0">家长版</view>
-        <view class="role-item {{role == 1 ? 'active' : ''}}" bindtap="switchRole" data-role="1">教师版</view>
-      </view>
-      <view class="role-selector" wx:else>
-        <view class="role-item active" bindtap="goLogin">未登录</view>
-      </view>
+      <view class="nav-title">我的</view>
       <view class="header-icons">
         <text class="h-icon">🔔</text>
         <text class="h-icon">⚙️</text>
