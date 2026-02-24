@@ -176,5 +176,8 @@ Page({
   },
   goBack() {
     wx.navigateBack();
+  },
+  goRegister() {
+    wx.navigateTo({ url: '/pages/register/index' });
   }
 });

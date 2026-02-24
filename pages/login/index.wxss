@@ -43,3 +43,7 @@ page { background-color: #FFFFFF; }
   display: flex; align-items: center; justify-content: center;
 }
 .wx-icon { width: 36rpx; height: 36rpx; margin-right: 16rpx; }
+
+.register-entry { margin-top: 36rpx; display: flex; justify-content: center; align-items: center; }
+.register-tip { color: #94A3B8; font-size: 26rpx; }
+.register-link { color: #3B82F6; font-size: 26rpx; margin-left: 12rpx; font-weight: 600; }
