@@ -163,9 +163,7 @@ Page({
       return;
     }
 
-    const path = this.data.canShowTeacher
-      ? '/pages/certs/index'
-      : '/pages/apply/index';
+    const path = '/pages/certs/index';
     this.navigateTo(path);
   },
   onLogout() {
