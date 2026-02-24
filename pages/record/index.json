@@ -1,5 +1,8 @@
 {
-  "navigationStyle": "custom",
-  "navigationBarTextStyle": "black",
-  "backgroundColor": "#f7f8fa"
+  "usingComponents": {
+    "ui-page-nav": "/components/ui-page-nav/index",
+    "ui-section-title": "/components/ui-section-title/index",
+    "ui-record-summary": "/components/ui-record-summary/index",
+    "ui-record-item": "/components/ui-record-item/index"
+  }
 }

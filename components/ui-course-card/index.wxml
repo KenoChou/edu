@@ -1,0 +1,13 @@
+<view class="course-item">
+  <view class="course-head">
+    <text class="course-name">{{course.name}}</text>
+    <text class="teacher-name">老师：{{course.teacher}}</text>
+  </view>
+  <view class="progress-box">
+    <view class="bar-bg">
+      <view class="bar-fill" style="width: {{course.percent}}%"></view>
+    </view>
+    <text class="percent-txt">{{course.percent}}%</text>
+  </view>
+  <view class="course-foot"><text>已上课时：{{course.progress}} 节</text></view>
+</view>

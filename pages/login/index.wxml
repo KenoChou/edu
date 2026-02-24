@@ -26,6 +26,11 @@
     <button class="login-btn {{phone.length==11 && code.length>=4 ? 'active' : ''}}" 
             bindtap="handleLogin">进入系统</button>
 
+    <view class="test-account">
+      <text>测试账号：13800000000 / 123456</text>
+      <text class="test-fill" bindtap="useTestAccount">一键填充</text>
+    </view>
+
     <view class="other-login">
       <view class="divider"></view>
       <text class="other-txt">快捷方式</text>

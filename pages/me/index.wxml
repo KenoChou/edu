@@ -4,6 +4,11 @@
 
     <view class="nav-bar" style="height: {{navHeight}}px;">
       <view class="nav-title">我的</view>
+    <view class="role-selector" wx:if="{{canSwitchRole}}">
+      <view class="role-item {{role === 0 ? 'active' : ''}}" data-role="0" bindtap="switchRole">家长版</view>
+      <view class="role-item {{role === 1 ? 'active' : ''}}" data-role="1" bindtap="switchRole">教师版</view>
+    </view>
+
       <view class="header-icons">
         <text class="h-icon">🔔</text>
         <text class="h-icon">⚙️</text>

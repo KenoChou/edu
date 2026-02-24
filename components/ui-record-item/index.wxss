@@ -1,0 +1,9 @@
+.record-item { background: #fff; padding: 30rpx; border-radius: 20rpx; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20rpx; }
+.item-left { display: flex; flex-direction: column; }
+.item-name { font-size: 28rpx; font-weight: 500; color: #333; margin-bottom: 8rpx; }
+.item-time { font-size: 22rpx; color: #999; }
+.item-right { text-align: right; }
+.amount { font-size: 32rpx; font-weight: bold; display: block; }
+.plus { color: #2d7d52; }
+.minus { color: #ff4d4f; }
+.status { font-size: 20rpx; color: #bbb; }

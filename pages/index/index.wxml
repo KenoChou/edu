@@ -44,15 +44,15 @@
 
     <view class="c-card">
       <view class="c-l">
-        <image src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200" mode="aspectFill"></image>
+        <image src="{{hotCourse.cover}}" mode="aspectFill"></image>
         <view class="c-tag">热招</view>
       </view>
       <view class="c-r">
-        <view class="c-title">少儿钢琴启蒙</view>
-        <view class="c-label">钢琴</view>
-        <view class="c-desc">菲伯尔教学法，趣味识谱。</view>
+        <view class="c-title">{{hotCourse.name}}</view>
+        <view class="c-label">{{hotCourse.category}}</view>
+        <view class="c-desc">{{hotCourse.desc}}</view>
         <view class="c-f">
-          <view class="c-p">¥<text>200</text>/课时</view>
+          <view class="c-p">¥<text>{{hotCourse.price}}</text>/课时</view>
           <view class="c-btn" bindtap="goToCourseDetail">预订</view>
         </view>
       </view>
