@@ -22,6 +22,14 @@ export const loginWithPhoneCode = (phone, verifyCode) =>
     noAuth: true
   });
 
+export const registerWithPhoneCode = (data) =>
+  request({
+    url: '/auth/register',
+    method: 'POST',
+    data,
+    noAuth: true
+  });
+
 export const getUserProfile = () =>
   request({ url: '/user/profile' });
 
