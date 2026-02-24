@@ -1,0 +1,31 @@
+.ui-nav {
+  width: 100%;
+  z-index: 100;
+}
+
+.is-fixed {
+  position: sticky;
+  top: 0;
+}
+
+.ui-nav-content {
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+}
+
+.ui-nav-back {
+  width: 60rpx;
+  font-size: 44rpx;
+  color: #1e293b;
+}
+
+.ui-nav-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.ui-nav-right {
+  margin-left: auto;
+}

@@ -1,0 +1,10 @@
+<view class="record-item">
+  <view class="item-left">
+    <text class="item-name">{{record.title}}</text>
+    <text class="item-time">{{record.date}}</text>
+  </view>
+  <view class="item-right">
+    <text class="amount {{record.cost > 0 ? 'plus' : 'minus'}}">{{record.cost > 0 ? '+' : ''}}{{record.cost}}</text>
+    <text class="status">{{record.status}}</text>
+  </view>
+</view>

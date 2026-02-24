@@ -1,0 +1,14 @@
+<view class="notice-item">
+  <view class="item-header">
+    <view class="title-row">
+      <view wx:if="{{!notice.isRead}}" class="dot"></view>
+      <text class="item-title">{{notice.title}}</text>
+    </view>
+    <text class="item-time">{{notice.time}}</text>
+  </view>
+  <view class="item-content">{{notice.content}}</view>
+  <view class="item-footer">
+    <text class="type-tag {{notice.type}}">{{notice.type == 'course' ? '课程提醒' : (notice.type == 'income' ? '财务通知' : '系统消息')}}</text>
+    <text class="detail-link">查看详情 ></text>
+  </view>
+</view>

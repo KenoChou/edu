@@ -17,6 +17,18 @@
 ├── app.js                     # 小程序入口，初始化全局 store
 ├── app.json                   # 页面路由与全局配置
 ├── config.js                  # 环境配置（baseUrl / appId）
+├── mocks/                     # 演示数据（课程、测试账号）
+│   └── demo.js
+
+├── components/                # 复用组件库
+│   ├── ui-page-nav/           # 统一页面导航栏组件
+│   ├── ui-section-title/      # 统一分区标题组件
+│   ├── ui-notice-item/        # 通知卡片组件
+│   ├── ui-record-summary/     # 课时概览组件
+│   ├── ui-record-item/        # 记录条目组件
+│   ├── ui-child-profile/      # 孩子档案卡组件
+│   ├── ui-course-card/        # 课程进度卡组件
+│   └── ui-dashed-action/      # 虚线操作按钮组件
 ├── services/
 │   └── api.js                 # 业务 API 封装
 ├── utils/
@@ -62,3 +74,30 @@
 - 为 store 增加 action 层与错误边界日志。
 - 补充页面级与请求层自动化测试。
 - 增加 CI（lint / 单测 / 构建检查）。
+
+## 组件库（新增）
+
+本次已将页面构建元素抽离为可复用组件，位于 `components/`：
+
+- `ui-page-nav`：统一顶部导航（状态栏偏移、返回按钮、标题、右侧插槽）。
+- `ui-section-title`：统一内容区块标题（可选左侧强调线、右侧操作文案）。
+- `ui-notice-item`：消息通知条目卡片。
+- `ui-record-summary`：课时记录页顶部概览卡片。
+- `ui-record-item`：课时记录条目卡片。
+- `ui-child-profile`：孩子档案信息卡。
+- `ui-course-card`：课程进度卡片。
+- `ui-dashed-action`：通用虚线边框操作按钮。
+
+已接入页面：
+
+- `pages/notice/index`
+- `pages/record/index`
+- `pages/child/index`
+
+## Mock 数据与测试账号
+
+- 课程 mock：`mocks/demo.js` 中维护 `MOCK_COURSES`，已接入首页热门、分类列表与详情兜底。
+- 测试账号（功能验证）：
+  - 手机号：`13800000000`
+  - 验证码：`123456`
+- 登录页支持“一键填充测试账号”快速验证。

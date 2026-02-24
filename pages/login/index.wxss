@@ -32,6 +32,9 @@ page { background-color: #FFFFFF; }
 }
 .login-btn.active { background: #3B82F6; box-shadow: 0 10rpx 20rpx rgba(59, 130, 246, 0.2); }
 
+.test-account { margin-top: 24rpx; display: flex; justify-content: space-between; align-items: center; font-size: 24rpx; color: #64748B; }
+.test-fill { color: #3B82F6; font-weight: 600; }
+
 /* 微信登录区 */
 .other-login { display: flex; align-items: center; justify-content: center; margin-top: 120rpx; margin-bottom: 40rpx; }
 .divider { width: 60rpx; height: 1rpx; background: #E2E8F0; }

@@ -1,0 +1,7 @@
+<view class="section-title-wrap">
+  <view class="section-main">
+    <view wx:if="{{showLine}}" class="section-line"></view>
+    <text class="section-title">{{title}}</text>
+  </view>
+  <text wx:if="{{extraText}}" class="section-extra" bindtap="onExtraTap">{{extraText}}</text>
+</view>
