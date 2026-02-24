@@ -1,10 +1,11 @@
 <view class="page-root">
-  <view class="header" style="padding-top: {{menuTop}}px;">
-    <view class="nav-bar" style="height: {{menuHeight}}px;">
-      <view class="back-btn" bindtap="goBack">←</view>
-      <text class="nav-title">消息通知</text>
-    </view>
-  </view>
+  <ui-page-nav
+    top="{{menuTop}}"
+    height="{{menuHeight}}"
+    title="消息通知"
+    background="#f7f8fa"
+    bind:back="goBack"
+  />
 
   <view class="main-body">
     <view class="notice-item" wx:for="{{notices}}" wx:key="id">
@@ -16,7 +17,7 @@
         <text class="item-time">{{item.time}}</text>
       </view>
       <view class="item-content">{{item.content}}</view>
-      
+
       <view class="item-footer">
         <text class="type-tag {{item.type}}">{{item.type == 'course' ? '课程提醒' : (item.type == 'income' ? '财务通知' : '系统消息')}}</text>
         <text class="detail-link">查看详情 ></text>
