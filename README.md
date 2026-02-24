@@ -17,6 +17,8 @@
 ├── app.js                     # 小程序入口，初始化全局 store
 ├── app.json                   # 页面路由与全局配置
 ├── config.js                  # 环境配置（baseUrl / appId）
+├── mocks/                     # 演示数据（课程、测试账号）
+│   └── demo.js
 
 ├── components/                # 复用组件库
 │   ├── ui-page-nav/           # 统一页面导航栏组件
@@ -91,3 +93,11 @@
 - `pages/notice/index`
 - `pages/record/index`
 - `pages/child/index`
+
+## Mock 数据与测试账号
+
+- 课程 mock：`mocks/demo.js` 中维护 `MOCK_COURSES`，已接入首页热门、分类列表与详情兜底。
+- 测试账号（功能验证）：
+  - 手机号：`13800000000`
+  - 验证码：`123456`
+- 登录页支持“一键填充测试账号”快速验证。
