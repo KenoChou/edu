@@ -1,4 +1,5 @@
 import { createCourseOrder, getCourseDetail } from '../../services/api.js';
+import { getMockCourseById } from '../../mocks/demo.js';
 
 function buildDefaultPackages(basePrice = 200) {
   return [
@@ -55,6 +56,16 @@ Page({
         packageList: buildDefaultPackages(unitPrice)
       });
     } catch (error) {
+      const mockDetail = getMockCourseById(this.data.courseId);
+      if (mockDetail) {
+        this.setData({
+          courseName: mockDetail.name,
+          coursePrice: Number(mockDetail.price || 200),
+          courseDesc: mockDetail.desc || this.data.courseDesc,
+          courseTags: mockDetail.tags || ['线下授课', '含教材', '随时退'],
+          packageList: buildDefaultPackages(Number(mockDetail.price || 200))
+        });
+      }
       console.warn('getCourseDetail failed:', error);
     } finally {
       this.setData({ loading: false });

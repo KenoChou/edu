@@ -1,52 +1,22 @@
 <view class="page-container">
-  <view class="custom-navbar" style="padding-top: {{navTop}}px;">
-    <view class="nav-wrapper" style="height: {{navHeight}}px;">
-      <view class="back-area" bindtap="goBack">
-        <text class="back-arrow">〈</text>
-      </view>
-      <text class="nav-title">我的孩子</text>
-    </view>
-  </view>
+  <ui-page-nav
+    top="{{navTop}}"
+    height="{{navHeight}}"
+    title="我的孩子"
+    background="#F8FAFC"
+    backIcon="〈"
+    fixed="{{true}}"
+    bind:back="goBack"
+  />
 
-  <view class="content-scroll" style="margin-top: {{navTop + navHeight + 10}}px;">
-    
-    <view class="child-profile">
-      <view class="avatar-circle">
-        <text>{{childList[activeChildIndex].name[0]}}</text>
-      </view>
-      <view class="child-info">
-        <view class="name-box">
-          <text class="u-name">{{childList[activeChildIndex].name}}</text>
-          <text class="u-tag">男</text>
-        </view>
-        <text class="u-sub">{{childList[activeChildIndex].age}} | 入学：{{childList[activeChildIndex].joinDate}}</text>
-      </view>
-      <view class="switch-btn" bindtap="switchChild">切换</view>
-    </view>
+  <view class="content-scroll" style="margin-top: 10px;">
+    <ui-child-profile child="{{childList[activeChildIndex]}}" bind:switch="switchChild" />
 
-    <view class="list-label">在读课程进度</view>
+    <ui-section-title title="在读课程进度" />
     <view class="course-list">
-      <view class="course-item" wx:for="{{childList[activeChildIndex].courses}}" wx:key="id">
-        <view class="course-head">
-          <text class="course-name">{{item.name}}</text>
-          <text class="teacher-name">老师：{{item.teacher}}</text>
-        </view>
-        <view class="progress-box">
-          <view class="bar-bg">
-            <view class="bar-fill" style="width: {{item.percent}}%"></view>
-          </view>
-          <text class="percent-txt">{{item.percent}}%</text>
-        </view>
-        <view class="course-foot">
-          <text>已上课时：{{item.progress}} 节</text>
-        </view>
-      </view>
+      <ui-course-card wx:for="{{childList[activeChildIndex].courses}}" wx:key="id" course="{{item}}" />
     </view>
 
-    <view class="add-child-entry" bindtap="addChild">
-      <view class="plus-icon">+</view>
-      <text>绑定/添加其他孩子</text>
-    </view>
-    
+    <ui-dashed-action text="绑定/添加其他孩子" icon="+" bind:tap="addChild" />
   </view>
 </view>

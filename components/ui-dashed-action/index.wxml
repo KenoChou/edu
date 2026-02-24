@@ -1,0 +1,4 @@
+<view class="add-child-entry" bindtap="onTap">
+  <view class="plus-icon">{{icon}}</view>
+  <text>{{text}}</text>
+</view>

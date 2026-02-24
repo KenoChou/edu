@@ -7,6 +7,7 @@ import {
   loginWithPhoneCode,
   sendLoginCode
 } from '../../services/api.js';
+import { TEST_ACCOUNT } from '../../mocks/demo.js';
 
 const app = getApp();
 
@@ -77,11 +78,17 @@ Page({
       wx.showToast({ title: '验证码已发送', icon: 'none' });
       this.startCountdown();
     } catch (error) {
-      // 开发环境兜底，避免无法联调时阻断页面流程
       wx.showToast({ title: '验证码发送失败，已进入演示模式', icon: 'none' });
       this.startCountdown();
       console.warn('sendLoginCode failed:', error);
     }
+  },
+  useTestAccount() {
+    this.setData({
+      phone: TEST_ACCOUNT.phone,
+      code: TEST_ACCOUNT.code
+    });
+    wx.showToast({ title: '已填充测试账号', icon: 'none' });
   },
   async handleLogin() {
     if (!/^1[3-9]\d{9}$/.test(this.data.phone) || this.data.code.length < 4) {
@@ -90,19 +97,27 @@ Page({
     }
 
     this.setData({ loginStatus: LOGIN_STATUS.LOGGING_IN });
-
     const store = app.getStore();
+
+    if (this.data.phone === TEST_ACCOUNT.phone && this.data.code === TEST_ACCOUNT.code) {
+      store.setSession({
+        token: `test_${Date.now()}`,
+        roleType: TEST_ACCOUNT.roleType,
+        loginStatus: LOGIN_STATUS.LOGGED_IN
+      });
+      store.setUserProfile(TEST_ACCOUNT.profile);
+      this.setData({ loginStatus: LOGIN_STATUS.LOGGED_IN });
+      wx.showToast({ title: '测试账号登录成功', icon: 'none' });
+      wx.switchTab({ url: '/pages/index/index' });
+      return;
+    }
 
     try {
       const loginRes = await loginWithPhoneCode(this.data.phone, this.data.code);
       const token = loginRes?.token || `mock_${Date.now()}`;
       const roleType = Number(loginRes?.roleType ?? ROLE_TYPES.PARENT);
 
-      store.setSession({
-        token,
-        roleType,
-        loginStatus: LOGIN_STATUS.LOGGED_IN
-      });
+      store.setSession({ token, roleType, loginStatus: LOGIN_STATUS.LOGGED_IN });
 
       try {
         const profile = await getUserProfile();
@@ -113,18 +128,13 @@ Page({
           city: profile?.city || '北京'
         });
       } catch (error) {
-        store.setUserProfile({
-          name: '李子轩',
-          userId: '882930',
-          city: '北京'
-        });
+        store.setUserProfile({ name: '李子轩', userId: '882930', city: '北京' });
         console.warn('getUserProfile failed:', error);
       }
 
       this.setData({ loginStatus: LOGIN_STATUS.LOGGED_IN });
       wx.switchTab({ url: '/pages/index/index' });
     } catch (error) {
-      // 登录接口未就绪时保留演示链路
       const mockToken = `mock_${Date.now()}`;
       store.setState((state) => ({
         session: {
@@ -146,33 +156,6 @@ Page({
       wx.switchTab({ url: '/pages/index/index' });
       console.warn('loginWithPhoneCode failed:', error);
     }
-
-    this.setData({ loginStatus: LOGIN_STATUS.LOGGING_IN });
-    wx.showLoading({ title: '登录中...' });
-
-    setTimeout(() => {
-      wx.hideLoading();
-      const mockToken = `mock_${Date.now()}`;
-      const store = app.getStore();
-
-      store.setState((state) => ({
-        session: {
-          ...state.session,
-          token: mockToken,
-          roleType: ROLE_TYPES.PARENT,
-          loginStatus: LOGIN_STATUS.LOGGED_IN
-        },
-        userProfile: {
-          ...state.userProfile,
-          name: '李子轩',
-          userId: '882930',
-          city: '北京'
-        }
-      }));
-
-      this.setData({ loginStatus: LOGIN_STATUS.LOGGED_IN });
-      wx.switchTab({ url: '/pages/index/index' });
-    }, 800);
   },
   goBack() {
     wx.navigateBack();

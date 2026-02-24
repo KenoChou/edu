@@ -1,0 +1,11 @@
+<view class="child-profile">
+  <view class="avatar-circle"><text>{{child.name ? child.name[0] : ''}}</text></view>
+  <view class="child-info">
+    <view class="name-box">
+      <text class="u-name">{{child.name}}</text>
+      <text class="u-tag">{{child.gender}}</text>
+    </view>
+    <text class="u-sub">{{child.age}} | 入学：{{child.joinDate}}</text>
+  </view>
+  <view class="switch-btn" bindtap="onSwitchTap">切换</view>
+</view>

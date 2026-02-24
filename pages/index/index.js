@@ -1,3 +1,4 @@
+import { getHotMockCourse } from '../../mocks/demo.js';
 Page({
   data: {
     statusBarHeight: 20,
@@ -11,6 +12,7 @@ Page({
       { id: 'sh-pd', name: '上海浦东校区', address: '浦东新区张杨路 500 号' },
       { id: 'gz-th', name: '广州天河校区', address: '天河区体育西路 102 号' }
     ],
+    hotCourse: getHotMockCourse(),
     menus: [
       { id: 1, icon: '🏀', text: '体育' },
       { id: 2, icon: '🎹', text: '音乐' },
@@ -56,7 +58,8 @@ Page({
   },
 
   goToCourseDetail() {
-    wx.navigateTo({ url: '/pages/detail/index?id=1001' });
+    const id = this.data.hotCourse?.id || '1001';
+    wx.navigateTo({ url: `/pages/detail/index?id=${id}` });
   },
 
   onLoad() {
