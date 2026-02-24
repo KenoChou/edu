@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "ui-page-nav": "/components/ui-page-nav/index",
-    "ui-section-title": "/components/ui-section-title/index"
+    "ui-section-title": "/components/ui-section-title/index",
+    "ui-child-profile": "/components/ui-child-profile/index",
+    "ui-course-card": "/components/ui-course-card/index",
+    "ui-dashed-action": "/components/ui-dashed-action/index"
   }
 }

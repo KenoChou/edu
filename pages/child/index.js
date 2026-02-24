@@ -31,6 +31,12 @@ Page({
     const nextIndex = (this.data.activeChildIndex + 1) % this.data.childList.length;
     this.setData({ activeChildIndex: nextIndex });
   },
+  addChild() {
+    wx.showToast({
+      title: '功能开发中',
+      icon: 'none'
+    });
+  },
   goBack() {
     wx.navigateBack();
   }

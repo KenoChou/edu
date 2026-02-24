@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "ui-page-nav": "/components/ui-page-nav/index"
+    "ui-page-nav": "/components/ui-page-nav/index",
+    "ui-notice-item": "/components/ui-notice-item/index"
   }
 }
