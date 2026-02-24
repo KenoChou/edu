@@ -1,0 +1,8 @@
+.child-profile { background: #FFFFFF; border-radius: 32rpx; padding: 40rpx; display: flex; align-items: center; box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.04); margin-bottom: 50rpx; }
+.avatar-circle { width: 100rpx; height: 100rpx; background: linear-gradient(135deg, #3B82F6, #60A5FA); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FFF; font-size: 40rpx; font-weight: bold; margin-right: 24rpx; }
+.child-info { flex: 1; }
+.name-box { display: flex; align-items: center; margin-bottom: 8rpx; }
+.u-name { font-size: 34rpx; font-weight: 700; color: #1E293B; }
+.u-tag { font-size: 20rpx; color: #3B82F6; background: #EFF6FF; padding: 2rpx 12rpx; border-radius: 6rpx; margin-left: 12rpx; }
+.u-sub { font-size: 24rpx; color: #94A3B8; }
+.switch-btn { font-size: 24rpx; color: #3B82F6; padding: 10rpx 24rpx; border: 1.5rpx solid #DBEAFE; border-radius: 30rpx; }
