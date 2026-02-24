@@ -1,15 +1,15 @@
 <view class="page-container">
-  <view class="custom-navbar" style="padding-top: {{navTop}}px;">
-    <view class="nav-wrapper" style="height: {{navHeight}}px;">
-      <view class="back-area" bindtap="goBack">
-        <text class="back-arrow">〈</text>
-      </view>
-      <text class="nav-title">我的孩子</text>
-    </view>
-  </view>
+  <ui-page-nav
+    top="{{navTop}}"
+    height="{{navHeight}}"
+    title="我的孩子"
+    background="#F8FAFC"
+    backIcon="〈"
+    fixed="{{true}}"
+    bind:back="goBack"
+  />
 
-  <view class="content-scroll" style="margin-top: {{navTop + navHeight + 10}}px;">
-    
+  <view class="content-scroll" style="margin-top: 10px;">
     <view class="child-profile">
       <view class="avatar-circle">
         <text>{{childList[activeChildIndex].name[0]}}</text>
@@ -24,7 +24,7 @@
       <view class="switch-btn" bindtap="switchChild">切换</view>
     </view>
 
-    <view class="list-label">在读课程进度</view>
+    <ui-section-title title="在读课程进度" />
     <view class="course-list">
       <view class="course-item" wx:for="{{childList[activeChildIndex].courses}}" wx:key="id">
         <view class="course-head">
@@ -47,6 +47,5 @@
       <view class="plus-icon">+</view>
       <text>绑定/添加其他孩子</text>
     </view>
-    
   </view>
 </view>

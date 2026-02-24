@@ -1,10 +1,11 @@
 <view class="page-container">
-  <view class="custom-header" style="padding-top: {{navTop}}px; height: {{navHeight}}px;">
-    <view class="header-content">
-      <view class="back-btn" bindtap="goBack">←</view>
-      <text class="page-title">课时记录</text>
-    </view>
-  </view>
+  <ui-page-nav
+    top="{{navTop}}"
+    height="{{navHeight}}"
+    title="课时记录"
+    background="#f7f8fa"
+    bind:back="goBack"
+  />
 
   <view class="content-body">
     <view class="summary-card">
@@ -25,7 +26,7 @@
       </view>
     </view>
 
-    <view class="list-title">记录明细</view>
+    <ui-section-title title="记录明细" />
     <view class="record-list">
       <view class="record-item" wx:for="{{records}}" wx:key="id">
         <view class="item-left">
