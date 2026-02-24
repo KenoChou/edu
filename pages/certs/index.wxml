@@ -9,6 +9,12 @@
   <view class="main-body">
     <view class="tips">完善资质认证，有助于提升学员对您的信任度。</view>
 
+    <view class="mock-banner {{authStatus === 'verified' ? 'ok' : ''}}">
+      <text>{{authStatus === 'verified' ? '当前状态：教师认证已通过，可在我的页切换家长/教师角色' : '当前状态：未完成教师认证（可点击下方 Mock 按钮模拟通过）'}}</text>
+    </view>
+
+    <button class="mock-btn" wx:if="{{authStatus !== 'verified'}}" bindtap="mockVerifySuccess">Mock 教师认证成功</button>
+
     <view class="cert-card" wx:for="{{certList}}" wx:key="id">
       <view class="cert-info">
         <text class="cert-name">{{item.name}}</text>

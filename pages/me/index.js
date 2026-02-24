@@ -44,6 +44,7 @@ Page({
     navHeight: 0,
     isLoggedIn: false,
     canShowTeacher: false,
+    canSwitchRole: false,
     userName: '未登录用户',
     userId: '--',
     city: '--',
@@ -92,12 +93,14 @@ Page({
     const isLoggedIn = !!token;
     const userProfile = state?.userProfile || {};
     const authStatus = userProfile.authStatus || AUTH_STATUS.UNVERIFIED;
-    const canShowTeacher = isLoggedIn && role === ROLE_TYPES.TEACHER && authStatus === AUTH_STATUS.VERIFIED;
+    const canSwitchRole = isLoggedIn && authStatus === AUTH_STATUS.VERIFIED;
+    const canShowTeacher = canSwitchRole && role === ROLE_TYPES.TEACHER;
 
     this.setData({
       role,
       isLoggedIn,
       canShowTeacher,
+      canSwitchRole,
       userName: isLoggedIn ? (userProfile.name || '李子轩') : '未登录用户',
       userId: isLoggedIn ? (userProfile.userId || '882930') : '--',
       city: isLoggedIn ? (userProfile.city || '北京') : '--',
