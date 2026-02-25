@@ -21,6 +21,7 @@
     "pages/login/index",
     "pages/register/index",
     "pages/teacherSchedule/index",
+    "pages/teacherCertReview/index",
     "pages/studentList/index",
     "pages/remainingLessons/index",
     "pages/recharge/index"

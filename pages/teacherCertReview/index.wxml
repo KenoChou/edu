@@ -1,0 +1,143 @@
+<view class="container">
+  <!-- 自定义导航栏 -->
+  <view class="nav-fixed" style="padding-top: {{navTop}}px; height: {{navHeight}}px;">
+    <view class="nav-inner">
+      <view class="back-btn" bindtap="goBack">〈</view>
+      <view class="nav-title">教师资质审核</view>
+    </view>
+  </view>
+
+  <!-- 主内容 -->
+  <view class="main-content" style="padding-top: {{contentPaddingTop}}px;">
+    <!-- 标签页（固定在导航栏下方） -->
+    <view class="tab-bar" style="position: fixed; top: {{tabTop}}px; left: 0; right: 0; z-index: 110;">
+      <view class="tab-item {{currentIndex === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+        <text>待审核</text>
+        <view class="badge">{{pendingCerts.length}}</view>
+      </view>
+      <view class="tab-item {{currentIndex === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+        <text>已批准</text>
+      </view>
+      <view class="tab-item {{currentIndex === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+        <text>已拒绝</text>
+      </view>
+    </view>
+
+    <!-- 滑动内容区 -->
+    <swiper class="swiper-container" current="{{currentIndex}}" bindchange="onSwiperChange" duration="300">
+      <!-- 待审核 -->
+      <swiper-item class="swiper-item">
+        <view class="cert-list">
+          <view class="cert-item" wx:for="{{pendingCerts}}" wx:key="id" bindtap="showCertDetail" data-id="{{item.id}}">
+            <view class="cert-card">
+              <view class="cert-header">
+                <image class="cert-avatar" src="{{item.certImage}}" mode="aspectFill"></image>
+                <view class="cert-main">
+                  <view class="cert-title">{{item.certName}}</view>
+                  <view class="cert-teacher">{{item.teacherName}}</view>
+                  <view class="cert-meta">
+                    <text class="cert-date">{{item.applyDate}}</text>
+                  </view>
+                </view>
+                <view class="status-badge pending">待审</view>
+              </view>
+              <view class="cert-footer">
+                <view class="cert-detail-item">
+                  <text class="detail-label">证号</text>
+                  <text class="detail-value">{{item.certNo}}</text>
+                </view>
+                <view class="cert-detail-item">
+                  <text class="detail-label">年限</text>
+                  <text class="detail-value">{{item.yearsOfTeaching}}年</text>
+                </view>
+                <view class="cert-detail-item">
+                  <text class="detail-label">专项</text>
+                  <text class="detail-value">{{item.specialty}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+
+      <!-- 已批准 -->
+      <swiper-item class="swiper-item">
+        <view class="cert-list">
+          <view class="empty-state">
+            <text class="empty-icon">✓</text>
+            <text class="empty-text">暂无已批准的资质</text>
+          </view>
+        </view>
+      </swiper-item>
+
+      <!-- 已拒绝 -->
+      <swiper-item class="swiper-item">
+        <view class="cert-list">
+          <view class="empty-state">
+            <text class="empty-icon">✕</text>
+            <text class="empty-text">暂无已拒绝的资质</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 详情弹窗 -->
+  <view class="detail-modal" wx:if="{{showDetail}}" bindtap="hideCertDetail">
+    <view class="detail-content" catchTap="{{true}}">
+      <view class="detail-header">
+        <text class="detail-title">审核详情</text>
+        <view class="close-btn" bindtap="hideCertDetail">×</view>
+      </view>
+
+      <view class="detail-body">
+        <!-- 教师头部卡片 -->
+        <view class="teacher-card">
+          <image class="teacher-avatar" src="{{currentDetail.certImage}}" mode="aspectFill"></image>
+          <view class="teacher-info">
+            <view class="teacher-name">{{currentDetail.teacherName}}</view>
+            <view class="teacher-cert">{{currentDetail.certName}}</view>
+            <view class="teacher-meta">申请于 {{currentDetail.applyDate}}</view>
+          </view>
+        </view>
+
+        <!-- 详细信息卡片 -->
+        <view class="info-card">
+          <view class="info-header">个人信息</view>
+          <view class="info-grid">
+            <view class="info-item">
+              <view class="info-label">电话</view>
+              <view class="info-content">{{currentDetail.phone}}</view>
+            </view>
+            <view class="info-item">
+              <view class="info-label">教学年限</view>
+              <view class="info-content">{{currentDetail.yearsOfTeaching}}年</view>
+            </view>
+            <view class="info-item">
+              <view class="info-label">教学专项</view>
+              <view class="info-content">{{currentDetail.specialty}}</view>
+            </view>
+            <view class="info-item">
+              <view class="info-label">证书号</view>
+              <view class="info-content">{{currentDetail.certNo}}</view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 证书图片 -->
+        <view class="cert-image-section">
+          <view class="section-label">资质证书</view>
+          <image class="detail-cert-image" src="{{currentDetail.certImage}}" mode="aspectFit"></image>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="detail-footer">
+        <view class="btn-group">
+          <view class="btn btn-reject" bindtap="rejectCert">拒绝</view>
+          <view class="btn btn-approve" bindtap="approveCert">批准</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

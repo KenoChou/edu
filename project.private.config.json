@@ -23,11 +23,32 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/recharge/index",
-          "pathName": "pages/recharge/index",
+          "name": "pages/teacherCertReview/index",
+          "pathName": "pages/teacherCertReview/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/teacherSchedule/index",
+          "pathName": "pages/teacherSchedule/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/record/index",
+          "pathName": "pages/record/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/recharge/index",
+          "pathName": "pages/recharge/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/echarge/index",

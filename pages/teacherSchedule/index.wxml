@@ -25,29 +25,7 @@
           <view class="expanded-card">
             <view class="main-info">
               <text class="c-title">{{item.course}}</text>
-              <view class="stu-tag">学员：{{item.student}}</view>
-            </view>
-            
-            <view class="data-preview">
-              <view class="preview-row">
-                <text class="label">教学重点</text>
-                <text class="val">哈农练指法 1-5节、c大调音阶</text>
-              </view>
-              <view class="preview-row">
-                <text class="label">本堂点评</text>
-                <text class="val">手型稳定有进步，但三指转弯稍显僵硬。</text>
-              </view>
-              <view class="preview-row">
-                <text class="label">课后作业</text>
-                <text class="val">每天练习音阶15分钟，注意触键力度。</text>
-              </view>
-            </view>
-            
-            <view class="card-footer">
-              <view class="rating-stars">
-                表现：<text class="star">★★★★★</text>
-              </view>
-              <view class="more-link">详情 〉</view>
+              <view class="stu-tag">{{item.student}}</view>
             </view>
           </view>
         </view>
