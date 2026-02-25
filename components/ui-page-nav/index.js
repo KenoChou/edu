@@ -10,6 +10,10 @@ Component({
   methods: {
     onBackTap() {
       this.triggerEvent('back');
+    },
+    goBack() {
+      wx.navigateBack();
     }
   }
+  
 });

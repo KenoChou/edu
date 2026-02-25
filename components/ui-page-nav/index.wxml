@@ -1,6 +1,6 @@
 <view class="ui-nav {{fixed ? 'is-fixed' : ''}}" style="padding-top: {{top}}px; background: {{background}};">
   <view class="ui-nav-content" style="height: {{height}}px;">
-    <view class="ui-nav-back" bindtap="onBackTap">{{backIcon}}</view>
+    <view class="back-btn" bindtap="goBack">〈</view>
     <text class="ui-nav-title">{{title}}</text>
     <view class="ui-nav-right">
       <slot name="right"></slot>

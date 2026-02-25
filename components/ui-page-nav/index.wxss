@@ -2,7 +2,7 @@
   width: 100%;
   z-index: 100;
 }
-
+.back-btn { font-size: 40rpx; color: #1E293B; font-weight: bold; width: 60rpx; }
 .is-fixed {
   position: sticky;
   top: 0;
