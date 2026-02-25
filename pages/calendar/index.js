@@ -45,6 +45,27 @@ function normalizeScheduleItem(item = {}) {
   };
 }
 
+/* ========================= */
+/* 新增：按人员分组函数 */
+/* ========================= */
+function groupByPerson(list = []) {
+  const map = {};
+
+  list.forEach(item => {
+    if (!map[item.student]) {
+      map[item.student] = {
+        person: item.student,
+        first: item.sFirst,
+        color: item.color,
+        courses: []
+      };
+    }
+    map[item.student].courses.push(item);
+  });
+
+  return Object.values(map);
+}
+
 Page({
   data: {
     statusBarHeight: 20,
@@ -53,8 +74,10 @@ Page({
     loading: false,
     days: buildDateList(),
     selectedDate: '',
-    courseList: []
+    courseList: [],
+    personCourseList: [] // 新增
   },
+
   onLoad() {
     const sys = wx.getSystemInfoSync();
     const menu = wx.getMenuButtonBoundingClientRect();
@@ -69,12 +92,19 @@ Page({
 
     this.fetchSchedule();
   },
+
+  /* ========================= */
+  /* 模式切换（不再重复请求） */
+  /* ========================= */
   switchViewMode(e) {
     const mode = e.currentTarget.dataset.mode;
     if (!mode || mode === this.data.viewMode) return;
-    this.setData({ viewMode: mode });
-    this.fetchSchedule();
+
+    this.setData({
+      viewMode: mode
+    });
   },
+
   onSelectDay(e) {
     const { key } = e.currentTarget.dataset;
     const days = this.data.days.map((item) => ({
@@ -90,42 +120,59 @@ Page({
 
     this.fetchSchedule();
   },
+
   async fetchSchedule() {
     this.setData({ loading: true });
 
     try {
       const res = await getTeacherSchedule({
-        date: this.data.selectedDate,
-        viewMode: this.data.viewMode
+        date: this.data.selectedDate
       });
 
-      const list = Array.isArray(res) ? res : (res?.list || []);
+      const rawList = Array.isArray(res) ? res : (res?.list || []);
+      const normalizedList = rawList.map(normalizeScheduleItem);
+
       this.setData({
-        courseList: list.map(normalizeScheduleItem)
+        courseList: normalizedList,
+        personCourseList: groupByPerson(normalizedList)
       });
+
     } catch (error) {
-      // 联调失败时兜底展示
+
+      const mockList = [
+        normalizeScheduleItem({
+          id: 'mock_1',
+          time: '14:00',
+          title: '钢琴一对一',
+          studentName: '王小明',
+          room: '302',
+          status: 'ongoing'
+        }),
+        normalizeScheduleItem({
+          id: 'mock_2',
+          time: '16:00',
+          title: '少儿合唱排练',
+          studentName: '李萌萌',
+          room: '多功能厅',
+          status: 'upcoming'
+        }),
+        normalizeScheduleItem({
+          id: 'mock_3',
+          time: '18:00',
+          title: '吉他提升课',
+          studentName: '王小明',
+          room: '305',
+          status: 'finished'
+        })
+      ];
+
       this.setData({
-        courseList: [
-          normalizeScheduleItem({
-            id: 'mock_1',
-            time: '14:00',
-            title: '钢琴一对一',
-            studentName: '王小明',
-            room: '302',
-            status: 'ongoing'
-          }),
-          normalizeScheduleItem({
-            id: 'mock_2',
-            time: '16:00',
-            title: '少儿合唱排练',
-            studentName: '李萌萌',
-            room: '多功能厅',
-            status: 'upcoming'
-          })
-        ]
+        courseList: mockList,
+        personCourseList: groupByPerson(mockList)
       });
+
       console.warn('getTeacherSchedule failed:', error);
+
     } finally {
       this.setData({ loading: false });
     }

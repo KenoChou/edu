@@ -1,4 +1,5 @@
 <view class="page">
+  <!-- 顶部导航 -->
   <view class="nav-fixed" style="padding-top: {{statusBarHeight}}px;">
     <view class="nav-content" style="height: {{navHeight}}px;">
       <view class="nav-tabs">
@@ -16,8 +17,15 @@
     </view>
   </view>
 
-  <scroll-view class="date-bar" scroll-x enable-flex>
+  <!-- 日期横向滚动 -->
+  <scroll-view
+    class="date-bar"
+    scroll-x
+    enable-flex
+    scroll-into-view="{{scrollTo}}"
+  >
     <view
+      id="day-{{item.key}}"
       class="date-item {{item.active ? 'active' : ''}}"
       wx:for="{{days}}"
       wx:key="key"
@@ -29,29 +37,115 @@
     </view>
   </scroll-view>
 
+  <!-- 列表区域 -->
   <view class="list">
-    <view class="loading" wx:if="{{loading}}">课表加载中...</view>
 
-    <view class="item" wx:for="{{courseList}}" wx:key="id" wx:if="{{!loading}}">
-      <view class="left border-{{item.color}}">
-        <view class="t">{{item.time}}</view>
-        <view class="s">{{item.leftStatus}}</view>
-      </view>
-      <view class="right">
-        <view class="card-h">
-          <text class="ct">{{item.title}}</text>
-          <text class="bt">{{item.rightStatus}}</text>
-        </view>
-        <view class="card-b">
-          <view class="user">
-            <view class="av bg-{{item.color}}">{{item.sFirst}}</view>
-            <text>{{item.student}}</text>
-          </view>
-          <text class="loc">📍 {{item.room}}</text>
-        </view>
-      </view>
+    <!-- loading -->
+    <view class="loading" wx:if="{{loading}}">
+      课表加载中...
     </view>
 
-    <view class="empty" wx:if="{{!loading && courseList.length === 0}}">当前日期暂无课程安排</view>
+    <!-- ======================= -->
+    <!-- 按时间模式 -->
+    <!-- ======================= -->
+    <block wx:if="{{!loading && viewMode === 'time'}}">
+
+      <view
+        class="item"
+        wx:for="{{courseList}}"
+        wx:key="id"
+      >
+        <view class="left border-{{item.color}}">
+          <view class="t">{{item.time}}</view>
+          <view class="s">{{item.leftStatus}}</view>
+        </view>
+
+        <view class="right">
+          <view class="card-h">
+            <text class="ct">{{item.title}}</text>
+            <text class="bt">{{item.rightStatus}}</text>
+          </view>
+
+          <view class="card-b">
+            <view class="user">
+              <view class="av bg-{{item.color}}">
+                {{item.sFirst}}
+              </view>
+              <text>{{item.student}}</text>
+            </view>
+
+            <text class="loc">📍 {{item.room}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 空状态 -->
+      <view
+        class="empty"
+        wx:if="{{courseList.length === 0}}"
+      >
+        当前日期暂无课程安排
+      </view>
+
+    </block>
+
+    <!-- ======================= -->
+    <!-- 按人员模式 -->
+    <!-- ======================= -->
+    <block wx:if="{{!loading && viewMode === 'person'}}">
+
+      <view
+        class="person-group"
+        wx:for="{{personCourseList}}"
+        wx:key="person"
+      >
+
+        <!-- 人员头部 -->
+        <view class="person-header">
+          <view class="av bg-{{item.color}}">
+            {{item.first}}
+          </view>
+          <text class="pn">{{item.person}}</text>
+          <text class="count">
+            {{item.courses.length}} 节
+          </text>
+        </view>
+
+        <!-- 该人员课程 -->
+        <view
+          class="person-course"
+          wx:for="{{item.courses}}"
+          wx:key="id"
+        >
+          <view class="pc-left">
+            {{item.time}}
+          </view>
+
+          <view class="pc-right">
+            <view class="pc-title">
+              {{item.title}}
+            </view>
+
+            <view class="pc-bottom">
+              <text class="room">📍 {{item.room}}</text>
+              <text class="status">
+                {{item.rightStatus}}
+              </text>
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+      <!-- 空状态 -->
+      <view
+        class="empty"
+        wx:if="{{personCourseList.length === 0}}"
+      >
+        当前日期暂无课程安排
+      </view>
+
+    </block>
+
   </view>
 </view>

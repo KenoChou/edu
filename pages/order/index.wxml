@@ -32,7 +32,6 @@
       <view class="card-bottom">
         <text class="date">{{item.date}}</text>
         <view class="btn-group">
-          <view class="btn-secondary" wx:if="{{item.status == 2}}" bindtap="onViewContract" data-order-id="{{item.id}}">查看合同</view>
           <view class="btn-primary" wx:if="{{item.status == 1}}" bindtap="onPayNow" data-order-id="{{item.id}}">立即支付</view>
         </view>
       </view>

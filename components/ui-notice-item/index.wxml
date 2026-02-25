@@ -9,6 +9,6 @@
   <view class="item-content">{{notice.content}}</view>
   <view class="item-footer">
     <text class="type-tag {{notice.type}}">{{notice.type == 'course' ? '课程提醒' : (notice.type == 'income' ? '财务通知' : '系统消息')}}</text>
-    <text class="detail-link">查看详情 ></text>
+  
   </view>
 </view>
