@@ -32,7 +32,20 @@ Page({
     wx.navigateBack();
   },
   viewCert() {
-    wx.navigateTo({ url: '/pages/certs/index' });
+    // 显示资质弹窗（使用示例数据或真实数据请求）
+    const cert = {
+      id: 1,
+      name: '钢琴十级证书',
+      date: '2023-05-12',
+      status: '已认证',
+      image: 'https://via.placeholder.com/600x400?text=Cert+Image',
+      issuer: '国家音乐学院'
+    };
+    this.setData({ modalCert: cert, showCertModal: true });
+  },
+  noop() {},
+  hideCertModal() {
+    this.setData({ showCertModal: false, modalCert: null });
   },
   onSelect(e) {
     const { id } = e.currentTarget.dataset;

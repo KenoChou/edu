@@ -44,4 +44,27 @@
       </view>
     </view>
   </scroll-view>
+
+  <!-- 资质详情弹窗 -->
+  <view class="cert-modal" wx:if="{{showCertModal}}">
+    <view class="cert-backdrop" bindtap="hideCertModal"></view>
+    <view class="cert-panel" catchtap="noop">
+      <view class="cert-header">
+        <text class="cert-title">资质信息</text>
+        <view class="cert-close" bindtap="hideCertModal">×</view>
+      </view>
+      <view class="cert-body">
+        <image class="cert-img" src="{{modalCert.image}}" mode="aspectFit"></image>
+        <view class="cert-info">
+          <view class="cert-row"><text class="label">证书名：</text><text>{{modalCert.name}}</text></view>
+          <view class="cert-row"><text class="label">颁发日期：</text><text>{{modalCert.date}}</text></view>
+          <view class="cert-row"><text class="label">状态：</text><text>{{modalCert.status}}</text></view>
+          <view class="cert-row"><text class="label">颁发机构：</text><text>{{modalCert.issuer || '——'}}</text></view>
+        </view>
+      </view>
+      <view class="cert-footer">
+        <view class="btn btn-close" bindtap="hideCertModal">关闭</view>
+      </view>
+    </view>
+  </view>
 </view>

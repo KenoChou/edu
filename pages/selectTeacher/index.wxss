@@ -45,6 +45,34 @@ page { background: #f8f9fb; }
   white-space: nowrap; /* 强制文字不换行 */
 }
 
+/* 资质弹窗样式 */
+.cert-modal { position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 2000; }
+.cert-backdrop { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.45); }
+.cert-panel {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 80rpx);
+  max-width: 700rpx;
+  max-height: 80vh;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: auto;
+  box-shadow: 0 20rpx 40rpx rgba(0,0,0,0.12);
+}
+.cert-header { display:flex; align-items:center; justify-content:space-between; padding: 28rpx 28rpx 0 28rpx; }
+.cert-title { font-size: 30rpx; font-weight:700; }
+.cert-close { font-size: 36rpx; color: #999; }
+.cert-body { padding: 20rpx 28rpx; display: flex; gap: 20rpx; }
+.cert-img { width: 240rpx; height: 160rpx; background: #f3f4f6; border-radius: 12rpx; }
+.cert-info { flex:1; display:flex; flex-direction:column; gap:12rpx; }
+.cert-row { display:flex; gap:12rpx; align-items:center; }
+.label { color:#64748b; width:140rpx; }
+.cert-footer { padding: 16rpx 28rpx 28rpx; display:flex; justify-content:flex-end; }
+.btn { padding: 14rpx 28rpx; border-radius: 18rpx; }
+.btn-close { background:#f1f5f9; }
+
 /* 选中状态图标 */
 .check-circle { width: 40rpx; height: 40rpx; border: 2rpx solid #ddd; border-radius: 50%; box-sizing: border-box; }
 .check-circle.active {

@@ -33,7 +33,8 @@ const MENU_ROUTE_MAP = {
     实名认证: '/pages/verify/index',
     账号与安全: '/pages/login/index',
     联系客服: '/pages/notice/index',
-    关于: '/pages/logs/logs'
+    关于: '/pages/logs/logs',
+    教师资质审核: '/pages/teacherCertReview/index'
   }
 };
 
@@ -95,18 +96,36 @@ Page({
     const authStatus = userProfile.authStatus || AUTH_STATUS.UNVERIFIED;
     const canSwitchRole = isLoggedIn && authStatus === AUTH_STATUS.VERIFIED;
     const canShowTeacher = canSwitchRole && role === ROLE_TYPES.TEACHER;
+    // 判断是否为管理员：优先检查 userProfile.isAdmin，其次检查 session.isAdmin 或常见字段
+    const isAdmin = !!(
+      state?.userProfile?.isAdmin ||
+      state?.session?.isAdmin ||
+      state?.userProfile?.roles?.includes?.('admin') ||
+      state?.userProfile?.role === 'admin' ||
+      state?.userProfile?.is_admin
+    );
 
     this.setData({
       role,
       isLoggedIn,
       canShowTeacher,
       canSwitchRole,
+      isAdmin,
       userName: isLoggedIn ? (userProfile.name || '李子轩') : '未登录用户',
       userId: isLoggedIn ? (userProfile.userId || '882930') : '--',
       city: isLoggedIn ? (userProfile.city || '北京') : '--',
       authStatus,
       authStatusText: AUTH_STATUS_LABEL[authStatus] || AUTH_STATUS_LABEL[AUTH_STATUS.UNVERIFIED]
     });
+
+    // 构建设置列表，如果是管理员则加入 "教师资质审核" 项目
+    const baseSettings = ['实名认证', '账号与安全', '联系客服', '关于'];
+    const settings = [...baseSettings];
+    if (isAdmin) {
+      // 插入到开头以便更显眼（可调整位置）
+      settings.unshift('教师资质审核');
+    }
+    this.setData({ settingList: settings });
   },
   switchRole(e) {
     if (!this.data.isLoggedIn) {
