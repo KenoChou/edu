@@ -94,10 +94,6 @@
 
   <view class="bottom-bar">
     <view class="action-icons">
-      <view class="icon-unit">
-        <view class="icon-img">💬</view>
-        <text>咨询</text>
-      </view>
       <view class="icon-unit {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
         <view class="icon-img">{{isFavorite ? '⭐' : '☆'}}</view>
         <text>{{isFavorite ? '已收藏' : '收藏'}}</text>
